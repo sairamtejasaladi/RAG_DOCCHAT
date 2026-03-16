@@ -1,0 +1,23 @@
+# Environment variables
+.env
+
+# Logs
+docchat_app.log
+
+# Python cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environments (optional but recommended)
+venv/
+.env/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files (optional)
+.vscode/
+.idea/
