@@ -1,26 +1,27 @@
 """
 Verification Agent — fact-checks the draft answer against source documents.
-Uses Azure OpenAI (GPT-4) via the openai SDK.
+Uses local Ollama (Llama 3.1) via LangChain.
 """
-from openai import AzureOpenAI
 from typing import Dict, List
 from langchain_core.documents import Document
+from langchain_ollama import ChatOllama
 
 from docchat.config.settings import settings
 from docchat.utils.logging import logger
 
-
 class VerificationAgent:
     def __init__(self):
-        """Initialize the verification agent with Azure OpenAI."""
-        logger.info("Initializing VerificationAgent with Azure OpenAI...")
-        self.client = AzureOpenAI(
-            api_key=settings.AZURE_OPENAI_API_KEY,
-            api_version=settings.AZURE_OPENAI_API_VERSION,
-            azure_endpoint=settings.AZURE_OPENAI_ENDPOINT,
+        """Initialize the verification agent with local Ollama."""
+        logger.info(f"Initializing VerificationAgent with local model: {settings.LLM_MODEL_NAME}")
+        
+        # Initialize the LangChain Ollama client
+        self.llm = ChatOllama(
+            model=settings.LLM_MODEL_NAME,
+            base_url=settings.OLLAMA_BASE_URL,
+            temperature=0,  # CRITICAL: Keep at 0 for deterministic fact-checking
+            num_ctx=4096,   # Ensures enough space for answer + context
+            num_predict=500 # Matches your previous max_tokens setting
         )
-        self.deployment = settings.AZURE_OPENAI_DEPLOYMENT_NAME
-        self.model_name = settings.AZURE_OPENAI_MODEL_NAME
         logger.info("VerificationAgent initialized successfully.")
 
     def sanitize_response(self, response_text: str) -> str:
@@ -64,14 +65,17 @@ Additional Details: [Any extra information or explanations]
                     key, value = line.split(":", 1)
                     key = key.strip().capitalize()
                     value = value.strip()
-                    if key in {
-                        "Supported",
-                        "Unsupported claims",
-                        "Contradictions",
-                        "Relevant",
-                        "Additional details",
-                    }:
-                        if key in {"Unsupported claims", "Contradictions"}:
+                    # Mapping local model keys to expected keys
+                    key_map = {
+                        "Supported": "Supported",
+                        "Unsupported claims": "Unsupported Claims",
+                        "Contradictions": "Contradictions",
+                        "Relevant": "Relevant",
+                        "Additional details": "Additional Details"
+                    }
+                    target_key = key_map.get(key)
+                    if target_key:
+                        if target_key in {"Unsupported Claims", "Contradictions"}:
                             if value.startswith("[") and value.endswith("]"):
                                 items = value[1:-1].split(",")
                                 items = [
@@ -79,29 +83,18 @@ Additional Details: [Any extra information or explanations]
                                     for item in items
                                     if item.strip()
                                 ]
-                                verification[key] = items
+                                verification[target_key] = items
                             else:
-                                verification[key] = []
-                        elif key == "Additional details":
-                            verification[key] = value
+                                verification[target_key] = []
+                        elif target_key == "Additional Details":
+                            verification[target_key] = value
                         else:
-                            verification[key] = value.upper()
+                            verification[target_key] = value.upper()
 
-            # Ensure all keys are present
-            for key in [
-                "Supported",
-                "Unsupported Claims",
-                "Contradictions",
-                "Relevant",
-                "Additional Details",
-            ]:
+            # Fill missing keys to prevent UI/Workflow crashes
+            for key in ["Supported", "Unsupported Claims", "Contradictions", "Relevant", "Additional Details"]:
                 if key not in verification:
-                    if key in {"Unsupported Claims", "Contradictions"}:
-                        verification[key] = []
-                    elif key == "Additional Details":
-                        verification[key] = ""
-                    else:
-                        verification[key] = "NO"
+                    verification[key] = [] if "Claims" in key or "Contradictions" in key else ("NO" if key != "Additional Details" else "")
 
             return verification
         except Exception as e:
@@ -117,54 +110,38 @@ Additional Details: [Any extra information or explanations]
         additional_details = verification.get("Additional Details", "")
 
         report = f"**Supported:** {supported}\n"
-        if unsupported_claims:
-            report += f"**Unsupported Claims:** {', '.join(unsupported_claims)}\n"
-        else:
-            report += "**Unsupported Claims:** None\n"
-
-        if contradictions:
-            report += f"**Contradictions:** {', '.join(contradictions)}\n"
-        else:
-            report += "**Contradictions:** None\n"
-
+        report += f"**Unsupported Claims:** {', '.join(unsupported_claims) if unsupported_claims else 'None'}\n"
+        report += f"**Contradictions:** {', '.join(contradictions) if contradictions else 'None'}\n"
         report += f"**Relevant:** {relevant}\n"
-
-        if additional_details:
-            report += f"**Additional Details:** {additional_details}\n"
-        else:
-            report += "**Additional Details:** None\n"
+        report += f"**Additional Details:** {additional_details if additional_details else 'None'}\n"
 
         return report
 
     def check(self, answer: str, documents: List[Document]) -> Dict:
         """Verify the answer against the provided documents."""
-        logger.info(
-            f"VerificationAgent.check called with {len(documents)} documents."
-        )
+        logger.info(f"VerificationAgent.check called with {len(documents)} documents.")
 
         context = "\n\n".join([doc.page_content for doc in documents])
         prompt = self.generate_prompt(answer, context)
 
-        # LLM call — metrics, latency, tokens, tracing all auto-captured
         try:
-            response = self._call_llm(prompt)
-            llm_response = response.choices[0].message.content.strip()
+            # Replaces the old _call_llm and Azure structure
+            response = self.llm.invoke(prompt)
+            llm_response = response.content.strip()
             logger.info("Verification LLM response received.")
         except Exception as e:
             logger.error(f"Error during model inference: {e}")
-            raise RuntimeError(
-                "Failed to verify answer due to a model error."
-            ) from e
+            raise RuntimeError("Failed to verify answer due to a local model error.") from e
 
-        # Parse the response
-        sanitized = self.sanitize_response(llm_response) if llm_response else ""
+        # Parsing remains the same but handles the new string content
+        sanitized = self.sanitize_response(llm_response)
         if not sanitized:
             verification_report = {
                 "Supported": "NO",
                 "Unsupported Claims": [],
                 "Contradictions": [],
                 "Relevant": "NO",
-                "Additional Details": "Empty response from the model.",
+                "Additional Details": "Empty response from the local model.",
             }
         else:
             verification_report = self.parse_verification_response(sanitized)
@@ -174,22 +151,11 @@ Additional Details: [Any extra information or explanations]
                     "Unsupported Claims": [],
                     "Contradictions": [],
                     "Relevant": "NO",
-                    "Additional Details": "Failed to parse the model's response.",
+                    "Additional Details": "Failed to parse local model response.",
                 }
 
         report_formatted = self.format_verification_report(verification_report)
-        logger.info(f"Verification report generated.")
-
         return {
             "verification_report": report_formatted,
             "context_used": context,
         }
-
-    def _call_llm(self, prompt: str):
-        """Call Azure OpenAI LLM."""
-        return self.client.chat.completions.create(
-            model=self.deployment,
-            messages=[{"role": "user", "content": prompt}],
-            temperature=0.0,
-            max_tokens=500,
-        )

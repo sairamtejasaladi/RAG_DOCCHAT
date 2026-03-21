@@ -1,22 +1,22 @@
 """
 Relevance Checker — determines if the user's question is within scope of the uploaded documents.
-Uses Azure OpenAI for classification.
+Uses local Ollama for classification.
 """
-from openai import AzureOpenAI
+from langchain_ollama import ChatOllama
 from docchat.config.settings import settings
 from docchat.utils.logging import logger
 
-
 class RelevanceChecker:
     def __init__(self):
-        """Initialize the relevance checker with Azure OpenAI."""
-        self.client = AzureOpenAI(
-            api_key=settings.AZURE_OPENAI_API_KEY,
-            api_version=settings.AZURE_OPENAI_API_VERSION,
-            azure_endpoint=settings.AZURE_OPENAI_ENDPOINT,
+        """Initialize the relevance checker with local Ollama."""
+        # Initializing the LangChain Ollama client
+        self.llm = ChatOllama(
+            model=settings.LLM_MODEL_NAME,
+            base_url=settings.OLLAMA_BASE_URL,
+            temperature=0,
+            # Adding a small limit to speed up classification
+            num_predict=10 
         )
-        self.deployment = settings.AZURE_OPENAI_DEPLOYMENT_NAME
-        self.model_name = settings.AZURE_OPENAI_MODEL_NAME
 
     def check(self, question: str, retriever, k: int = 3) -> str:
         """
@@ -60,27 +60,23 @@ class RelevanceChecker:
 
 **Respond ONLY with one of: CAN_ANSWER, PARTIAL, NO_MATCH**"""
 
-        # LLM call — metrics, latency, tokens, tracing all auto-captured
         try:
-            response = self._call_llm(prompt)
-            llm_response = response.choices[0].message.content.strip().upper()
+            # The .invoke() method returns an AIMessage object
+            response = self.llm.invoke(prompt)
+            # Access content directly from the message object
+            llm_response = response.content.strip().upper()
+            
             logger.debug(f"LLM relevance response: {llm_response}")
         except Exception as e:
             logger.error(f"Error during relevance check: {e}")
             return "NO_MATCH"
 
         valid_labels = {"CAN_ANSWER", "PARTIAL", "NO_MATCH"}
-        if llm_response not in valid_labels:
-            logger.debug(f"Invalid classification '{llm_response}'. Defaulting to NO_MATCH.")
-            return "NO_MATCH"
+        
+        # Simple check to ensure the model didn't return extra text
+        for label in valid_labels:
+            if label in llm_response:
+                return label
 
-        return llm_response
-
-    def _call_llm(self, prompt: str):
-        """Call Azure OpenAI LLM."""
-        return self.client.chat.completions.create(
-            model=self.deployment,
-            messages=[{"role": "user", "content": prompt}],
-            temperature=0,
-            max_tokens=10,
-        )
+        logger.debug(f"Invalid classification '{llm_response}'. Defaulting to NO_MATCH.")
+        return "NO_MATCH"

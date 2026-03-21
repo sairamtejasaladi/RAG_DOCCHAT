@@ -1,26 +1,26 @@
 """
 Research Agent — generates answers from retrieved document context.
-Uses Azure OpenAI (GPT-4) via the openai SDK.
+Uses local Ollama (Llama 3.1) via LangChain.
 """
-from openai import AzureOpenAI
 from typing import Dict, List
 from langchain_core.documents import Document
+from langchain_ollama import ChatOllama
 
 from docchat.config.settings import settings
 from docchat.utils.logging import logger
 
-
 class ResearchAgent:
     def __init__(self):
-        """Initialize the research agent with Azure OpenAI."""
-        logger.info("Initializing ResearchAgent with Azure OpenAI...")
-        self.client = AzureOpenAI(
-            api_key=settings.AZURE_OPENAI_API_KEY,
-            api_version=settings.AZURE_OPENAI_API_VERSION,
-            azure_endpoint=settings.AZURE_OPENAI_ENDPOINT,
+        """Initialize the research agent with local Ollama."""
+        logger.info(f"Initializing ResearchAgent with local model: {settings.LLM_MODEL_NAME}")
+        
+        # Initialize the LangChain Ollama client
+        self.llm = ChatOllama(
+            model=settings.LLM_MODEL_NAME,
+            base_url=settings.OLLAMA_BASE_URL,
+            temperature=0.3, # Keeps a balance between factual and fluid
+            num_ctx=4096     # Standard context window for Llama 3.1
         )
-        self.deployment = settings.AZURE_OPENAI_DEPLOYMENT_NAME
-        self.model_name = settings.AZURE_OPENAI_MODEL_NAME
         logger.info("ResearchAgent initialized successfully.")
 
     def sanitize_response(self, response_text: str) -> str:
@@ -51,20 +51,23 @@ class ResearchAgent:
             f"and {len(documents)} documents."
         )
 
+        # Combine document contents into one context string
         context = "\n\n".join([doc.page_content for doc in documents])
         logger.info(f"Combined context length: {len(context)} characters.")
 
         prompt = self.generate_prompt(question, context)
 
-        # LLM call — metrics, latency, tokens, tracing all auto-captured
         try:
-            response = self._call_llm(prompt)
-            llm_response = response.choices[0].message.content.strip()
+            # LangChain .invoke() handles the call to your local Ollama server
+            # This replaces self._call_llm and the openai choices parsing
+            response = self.llm.invoke(prompt)
+            llm_response = response.content.strip()
+            
             logger.info("Research LLM response received.")
         except Exception as e:
             logger.error(f"Error during model inference: {e}")
             raise RuntimeError(
-                "Failed to generate answer due to a model error."
+                "Failed to generate answer due to a local model error."
             ) from e
 
         draft_answer = (
@@ -75,12 +78,3 @@ class ResearchAgent:
         logger.info(f"Generated answer length: {len(draft_answer)} chars")
 
         return {"draft_answer": draft_answer, "context_used": context}
-
-    def _call_llm(self, prompt: str):
-        """Call Azure OpenAI LLM."""
-        return self.client.chat.completions.create(
-            model=self.deployment,
-            messages=[{"role": "user", "content": prompt}],
-            temperature=0.3,
-            max_tokens=800,
-        )

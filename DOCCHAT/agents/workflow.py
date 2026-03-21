@@ -6,10 +6,8 @@ with self-correction loop on verification failure.
 from langgraph.graph import StateGraph, END
 from typing import TypedDict, List, Dict
 from langchain_core.documents import Document
-try:
-    from langchain.retrievers import EnsembleRetriever
-except ImportError:
-    from langchain.retrievers.ensemble import EnsembleRetriever
+
+from langchain_classic.retrievers import EnsembleRetriever
 
 from docchat.agents.research_agent import ResearchAgent
 from docchat.agents.verification_agent import VerificationAgent
