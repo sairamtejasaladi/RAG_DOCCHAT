@@ -460,6 +460,30 @@ For questions or support, please open an issue on GitHub.
 
 ---
 
+## 📊 Evaluation Results
+
+### Retrieval Metrics
+
+| Metric | Score |
+|--------|-------|
+| recall@5 | 0.7429 |
+| recall@10 | 0.8143 |
+| precision@5 | 0.1943 |
+| precision@10 | 0.1114 |
+| mrr | 0.4876 |
+| hit@5 | 0.8000 |
+| hit@10 | 0.8286 |
+
+### End-to-End Metrics
+
+| Metric | Score |
+|--------|-------|
+| exact_match | 1.0000 |
+| semantic_similarity | 1.0000 |
+| satisfaction_proxy | 1.0000 |
+
+---
+
 <div align="center">
 
 **Built with ❤️ using Azure OpenAI, LangChain, and LangGraph**

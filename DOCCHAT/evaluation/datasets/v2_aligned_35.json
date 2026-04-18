@@ -1,0 +1,560 @@
+{
+  "dataset_version": "3.0",
+  "created_at": "2026-04-17",
+  "domain": "technical_documentation",
+  "source_description": "35 evaluation entries with ground-truth aligned to actual vector store chunks. Built by inspecting chunk_manifest.json and mapping each question to real chunk IDs and substantial text excerpts.",
+  "entries": [
+    {
+      "id": "eval_001",
+      "question": "What embedding model does DocChat use for vector search?",
+      "ground_truth_answer": "DocChat uses all-MiniLM-L6-v2 with ONNX runtime via Chroma's built-in DefaultEmbeddingFunction, producing 384-dimensional vectors.",
+      "relevant_chunk_ids": ["TECHNICAL_DOCUMENTATION.md_0002", "TECHNICAL_DOCUMENTATION.md_0022"],
+      "relevant_chunk_texts": [
+        "Embeddings: all-MiniLM-L6-v2 (ONNX)",
+        "Each document chunk is embedded (text → 384-dim vector)"
+      ],
+      "source_documents": ["TECHNICAL_DOCUMENTATION.md"],
+      "difficulty": "easy",
+      "question_type": "factoid",
+      "relevance_label": "CAN_ANSWER",
+      "metadata": {"requires_multi_chunk": false, "requires_reasoning": false}
+    },
+    {
+      "id": "eval_002",
+      "question": "What is the chunk size and overlap used by DocChat's text splitter?",
+      "ground_truth_answer": "DocChat uses a chunk size of 1000 characters with a 200 character overlap using RecursiveCharacterTextSplitter.",
+      "relevant_chunk_ids": ["TECHNICAL_DOCUMENTATION.md_0015"],
+      "relevant_chunk_texts": [
+        "RecursiveCharacterTextSplitter",
+        "chunk_size=1000",
+        "chunk_overlap=200"
+      ],
+      "source_documents": ["TECHNICAL_DOCUMENTATION.md"],
+      "difficulty": "easy",
+      "question_type": "factoid",
+      "relevance_label": "CAN_ANSWER",
+      "metadata": {"requires_multi_chunk": false, "requires_reasoning": false}
+    },
+    {
+      "id": "eval_003",
+      "question": "What vector database does DocChat use?",
+      "ground_truth_answer": "DocChat uses ChromaDB as its vector database for storing and searching document embeddings.",
+      "relevant_chunk_ids": ["TECHNICAL_DOCUMENTATION.md_0002", "TECHNICAL_DOCUMENTATION.md_0022"],
+      "relevant_chunk_texts": [
+        "Vector DB: ChromaDB",
+        "Builds the vector store using ChromaDB"
+      ],
+      "source_documents": ["TECHNICAL_DOCUMENTATION.md"],
+      "difficulty": "easy",
+      "question_type": "factoid",
+      "relevance_label": "CAN_ANSWER",
+      "metadata": {"requires_multi_chunk": false, "requires_reasoning": false}
+    },
+    {
+      "id": "eval_004",
+      "question": "What web framework is used for DocChat's user interface?",
+      "ground_truth_answer": "DocChat uses Gradio for its web user interface.",
+      "relevant_chunk_ids": ["TECHNICAL_DOCUMENTATION.md_0002"],
+      "relevant_chunk_texts": [
+        "Frontend: Gradio (Web UI)"
+      ],
+      "source_documents": ["TECHNICAL_DOCUMENTATION.md"],
+      "difficulty": "easy",
+      "question_type": "factoid",
+      "relevance_label": "CAN_ANSWER",
+      "metadata": {"requires_multi_chunk": false, "requires_reasoning": false}
+    },
+    {
+      "id": "eval_005",
+      "question": "What framework is used for workflow orchestration in DocChat?",
+      "ground_truth_answer": "DocChat uses LangGraph for orchestrating the multi-agent workflow as a directed state graph.",
+      "relevant_chunk_ids": ["TECHNICAL_DOCUMENTATION.md_0002", "TECHNICAL_DOCUMENTATION.md_0039"],
+      "relevant_chunk_texts": [
+        "Orchestration: LangGraph",
+        "LangGraph is a library for building stateful, multi-agent workflows as directed graphs"
+      ],
+      "source_documents": ["TECHNICAL_DOCUMENTATION.md"],
+      "difficulty": "easy",
+      "question_type": "factoid",
+      "relevance_label": "CAN_ANSWER",
+      "metadata": {"requires_multi_chunk": false, "requires_reasoning": false}
+    },
+    {
+      "id": "eval_006",
+      "question": "What is the purpose of the Relevance Checker agent in DocChat?",
+      "ground_truth_answer": "The Relevance Checker determines if the user's question can be answered from the uploaded documents. It retrieves top-k documents and asks GPT-4 to classify relevance as CAN_ANSWER, PARTIAL, or NO_MATCH.",
+      "relevant_chunk_ids": ["TECHNICAL_DOCUMENTATION.md_0028"],
+      "relevant_chunk_texts": [
+        "Determines if the user's question can be answered from the uploaded documents",
+        "Classify how well the document content addresses the question",
+        "Respond with ONLY one of: CAN_ANSWER, PARTIAL, NO_MATCH"
+      ],
+      "source_documents": ["TECHNICAL_DOCUMENTATION.md"],
+      "difficulty": "easy",
+      "question_type": "factoid",
+      "relevance_label": "CAN_ANSWER",
+      "metadata": {"requires_multi_chunk": false, "requires_reasoning": false}
+    },
+    {
+      "id": "eval_007",
+      "question": "What does the Research Agent do in DocChat?",
+      "ground_truth_answer": "The Research Agent generates comprehensive, factual answers based on retrieved context. It combines retrieved documents, builds a structured prompt, calls GPT-4, and sanitizes the response.",
+      "relevant_chunk_ids": ["TECHNICAL_DOCUMENTATION.md_0031"],
+      "relevant_chunk_texts": [
+        "Generates comprehensive, factual answers based on retrieved context",
+        "Combine all retrieved documents into context",
+        "Call GPT-4 to generate answer"
+      ],
+      "source_documents": ["TECHNICAL_DOCUMENTATION.md"],
+      "difficulty": "easy",
+      "question_type": "factoid",
+      "relevance_label": "CAN_ANSWER",
+      "metadata": {"requires_multi_chunk": false, "requires_reasoning": false}
+    },
+    {
+      "id": "eval_008",
+      "question": "What is the purpose of the Verification Agent?",
+      "ground_truth_answer": "The Verification Agent fact-checks the generated answer against source documents. It combines documents into source context, builds a verification prompt, calls GPT-4 to verify, parses the response, and formats a verification report.",
+      "relevant_chunk_ids": ["TECHNICAL_DOCUMENTATION.md_0034"],
+      "relevant_chunk_texts": [
+        "Fact-checks the generated answer against source documents",
+        "Parse structured response",
+        "Format verification report"
+      ],
+      "source_documents": ["TECHNICAL_DOCUMENTATION.md"],
+      "difficulty": "easy",
+      "question_type": "factoid",
+      "relevance_label": "CAN_ANSWER",
+      "metadata": {"requires_multi_chunk": false, "requires_reasoning": false}
+    },
+    {
+      "id": "eval_009",
+      "question": "How does DocChat's hybrid retrieval system work?",
+      "ground_truth_answer": "DocChat's hybrid search combines BM25 (keyword-based) and vector search (semantic) using Reciprocal Rank Fusion. BM25 handles exact keyword matching while vector search understands meaning and context.",
+      "relevant_chunk_ids": ["TECHNICAL_DOCUMENTATION.md_0018", "TECHNICAL_DOCUMENTATION.md_0019"],
+      "relevant_chunk_texts": [
+        "Hybrid Search combines two complementary approaches",
+        "BM25 (Keyword Search) - Traditional information retrieval",
+        "Vector Search (Semantic Search) - Modern AI-powered search"
+      ],
+      "source_documents": ["TECHNICAL_DOCUMENTATION.md"],
+      "difficulty": "medium",
+      "question_type": "factoid",
+      "relevance_label": "CAN_ANSWER",
+      "metadata": {"requires_multi_chunk": true, "requires_reasoning": false}
+    },
+    {
+      "id": "eval_010",
+      "question": "What is RAG and how does it work?",
+      "ground_truth_answer": "RAG (Retrieval-Augmented Generation) is a technique that combines retrieval of relevant information from a knowledge base with generation using an LLM. It retrieves relevant documents, augments the LLM prompt with context, and generates grounded answers.",
+      "relevant_chunk_ids": ["TECHNICAL_DOCUMENTATION.md_0001", "sample_ai_agents.md_0001"],
+      "relevant_chunk_texts": [
+        "RAG (Retrieval-Augmented Generation) is a technique that combines",
+        "Retrieval: Finding relevant information from a knowledge base",
+        "RAG is a technique that enhances Large Language Models"
+      ],
+      "source_documents": ["TECHNICAL_DOCUMENTATION.md", "sample_ai_agents.md"],
+      "difficulty": "easy",
+      "question_type": "factoid",
+      "relevance_label": "CAN_ANSWER",
+      "metadata": {"requires_multi_chunk": true, "requires_reasoning": false}
+    },
+    {
+      "id": "eval_011",
+      "question": "What are the benefits of RAG?",
+      "ground_truth_answer": "RAG reduces hallucinations by grounding answers in real documents, enables LLMs to access up-to-date or domain-specific information, provides verifiable sources, and is cost-effective compared to fine-tuning.",
+      "relevant_chunk_ids": ["sample_ai_agents.md_0002"],
+      "relevant_chunk_texts": [
+        "Reduces hallucinations by grounding answers in real documents",
+        "Enables LLMs to access up-to-date or domain-specific information",
+        "Provides verifiable sources for generated answers",
+        "Cost-effective compared to fine-tuning models"
+      ],
+      "source_documents": ["sample_ai_agents.md"],
+      "difficulty": "easy",
+      "question_type": "factoid",
+      "relevance_label": "CAN_ANSWER",
+      "metadata": {"requires_multi_chunk": false, "requires_reasoning": false}
+    },
+    {
+      "id": "eval_012",
+      "question": "What are AI agents?",
+      "ground_truth_answer": "AI agents are autonomous software systems that can perceive their environment, make decisions, and take actions to achieve specific goals. Unlike traditional software, they use machine learning models to adapt their behavior.",
+      "relevant_chunk_ids": ["sample_ai_agents.md_0000"],
+      "relevant_chunk_texts": [
+        "AI agents are autonomous software systems that can perceive their environment, make decisions, and take actions to achieve specific goals",
+        "AI agents use machine learning models to adapt their behavior based on new information"
+      ],
+      "source_documents": ["sample_ai_agents.md"],
+      "difficulty": "easy",
+      "question_type": "factoid",
+      "relevance_label": "CAN_ANSWER",
+      "metadata": {"requires_multi_chunk": false, "requires_reasoning": false}
+    },
+    {
+      "id": "eval_013",
+      "question": "What types of AI agents exist?",
+      "ground_truth_answer": "There are three main types: Reactive agents (respond to current inputs without memory), Deliberative agents (maintain internal models and plan actions), and Hybrid agents (combine reactive and deliberative approaches).",
+      "relevant_chunk_ids": ["sample_ai_agents.md_0000", "sample_ai_agents.md_0001"],
+      "relevant_chunk_texts": [
+        "Reactive Agents",
+        "Deliberative Agents",
+        "Hybrid Agents",
+        "Reactive agents respond directly to current inputs without maintaining an internal state"
+      ],
+      "source_documents": ["sample_ai_agents.md"],
+      "difficulty": "easy",
+      "question_type": "factoid",
+      "relevance_label": "CAN_ANSWER",
+      "metadata": {"requires_multi_chunk": true, "requires_reasoning": false}
+    },
+    {
+      "id": "eval_014",
+      "question": "What are the key characteristics of multi-agent systems?",
+      "ground_truth_answer": "Key characteristics include cooperation (working toward shared goals), coordination (organizing activities to avoid conflicts), communication (exchanging information using defined protocols), and negotiation (resolving conflicts and reaching agreements).",
+      "relevant_chunk_ids": ["sample_ai_agents.md_0001"],
+      "relevant_chunk_texts": [
+        "Cooperation: Agents work together toward shared goals",
+        "Coordination: Agents organize their activities to avoid conflicts",
+        "Communication: Agents exchange information using defined protocols",
+        "Negotiation: Agents resolve conflicts and reach agreements"
+      ],
+      "source_documents": ["sample_ai_agents.md"],
+      "difficulty": "easy",
+      "question_type": "factoid",
+      "relevance_label": "CAN_ANSWER",
+      "metadata": {"requires_multi_chunk": false, "requires_reasoning": false}
+    },
+    {
+      "id": "eval_015",
+      "question": "What observability metrics are important for monitoring AI agents?",
+      "ground_truth_answer": "AI agent observability requires LLM Metrics (token usage, latency, error rates, cost tracking), Agent Metrics (execution counts, success/failure rates, timeout events), Workflow Metrics (pipeline duration, step completion rates), and Collaboration Metrics (handoff counts, inter-agent latency).",
+      "relevant_chunk_ids": ["sample_ai_agents.md_0003"],
+      "relevant_chunk_texts": [
+        "LLM Metrics: Token usage, latency, error rates, cost tracking",
+        "Agent Metrics: Execution counts, success/failure rates, timeout events",
+        "Workflow Metrics: Pipeline duration, step completion rates",
+        "Collaboration Metrics: Handoff counts, inter-agent latency"
+      ],
+      "source_documents": ["sample_ai_agents.md"],
+      "difficulty": "medium",
+      "question_type": "factoid",
+      "relevance_label": "CAN_ANSWER",
+      "metadata": {"requires_multi_chunk": false, "requires_reasoning": false}
+    },
+    {
+      "id": "eval_016",
+      "question": "How does OpenTelemetry help with AI system monitoring?",
+      "ground_truth_answer": "OpenTelemetry provides a standardized way to collect traces (end-to-end request flows), metrics (quantitative measurements like counters, histograms, gauges), and logs (structured event records) to understand system behavior and debug issues.",
+      "relevant_chunk_ids": ["sample_ai_agents.md_0003"],
+      "relevant_chunk_texts": [
+        "OpenTelemetry provides a standardized way to collect",
+        "Traces: End-to-end request flows across agents",
+        "Metrics: Quantitative measurements (counters, histograms, gauges)",
+        "Logs: Structured event records"
+      ],
+      "source_documents": ["sample_ai_agents.md"],
+      "difficulty": "medium",
+      "question_type": "factoid",
+      "relevance_label": "CAN_ANSWER",
+      "metadata": {"requires_multi_chunk": false, "requires_reasoning": false}
+    },
+    {
+      "id": "eval_017",
+      "question": "Why does DocChat use chunking for documents?",
+      "ground_truth_answer": "DocChat chunks documents because LLMs have token limits and can't process entire books, smaller chunks enable more precise retrieval, and it allows semantic search at the paragraph level.",
+      "relevant_chunk_ids": ["TECHNICAL_DOCUMENTATION.md_0015"],
+      "relevant_chunk_texts": [
+        "LLMs have token limits (can't process entire books)",
+        "Smaller chunks = more precise retrieval",
+        "Enables semantic search at paragraph level"
+      ],
+      "source_documents": ["TECHNICAL_DOCUMENTATION.md"],
+      "difficulty": "easy",
+      "question_type": "reasoning",
+      "relevance_label": "CAN_ANSWER",
+      "metadata": {"requires_multi_chunk": false, "requires_reasoning": true}
+    },
+    {
+      "id": "eval_018",
+      "question": "What is the self-correction loop in DocChat?",
+      "ground_truth_answer": "The self-correction loop is a cycle where the research agent generates an answer, the verification agent checks it, and if verification fails, the research agent tries again. It continues until verification passes, usually converging within 1-2 iterations, with a safeguard of max 3 iterations.",
+      "relevant_chunk_ids": ["TECHNICAL_DOCUMENTATION.md_0046"],
+      "relevant_chunk_texts": [
+        "research → verify → (fail) → research → verify",
+        "Verification identifies issues",
+        "Research agent gets another chance",
+        "Usually converges within 1-2 iterations"
+      ],
+      "source_documents": ["TECHNICAL_DOCUMENTATION.md"],
+      "difficulty": "medium",
+      "question_type": "reasoning",
+      "relevance_label": "CAN_ANSWER",
+      "metadata": {"requires_multi_chunk": false, "requires_reasoning": true}
+    },
+    {
+      "id": "eval_019",
+      "question": "How does DocChat's caching mechanism work?",
+      "ground_truth_answer": "DocChat uses SHA-256 content-based hashing for document caching. When a file is uploaded, its content hash is computed. If a valid cache exists, chunks are loaded from cache. Otherwise, the file is processed and cached. Cache validity is checked based on age.",
+      "relevant_chunk_ids": ["TECHNICAL_DOCUMENTATION.md_0011", "TECHNICAL_DOCUMENTATION.md_0009"],
+      "relevant_chunk_texts": [
+        "Content-based hashing: same content = same hash",
+        "If you upload the same file twice, it's recognized instantly",
+        "Main processing method with intelligent caching"
+      ],
+      "source_documents": ["TECHNICAL_DOCUMENTATION.md"],
+      "difficulty": "medium",
+      "question_type": "reasoning",
+      "relevance_label": "CAN_ANSWER",
+      "metadata": {"requires_multi_chunk": true, "requires_reasoning": true}
+    },
+    {
+      "id": "eval_020",
+      "question": "What are the strengths of BM25 search?",
+      "ground_truth_answer": "BM25 strengths include exact keyword matching, good performance for specific terms like product names, codes, and dates, being fast and lightweight, and requiring no training.",
+      "relevant_chunk_ids": ["TECHNICAL_DOCUMENTATION.md_0018"],
+      "relevant_chunk_texts": [
+        "Exact keyword matching",
+        "Good for specific terms (product names, codes, dates)",
+        "Fast and lightweight",
+        "No training required"
+      ],
+      "source_documents": ["TECHNICAL_DOCUMENTATION.md"],
+      "difficulty": "easy",
+      "question_type": "factoid",
+      "relevance_label": "CAN_ANSWER",
+      "metadata": {"requires_multi_chunk": false, "requires_reasoning": false}
+    },
+    {
+      "id": "eval_021",
+      "question": "What are the strengths and weaknesses of vector search?",
+      "ground_truth_answer": "Vector search strengths: understands meaning and context, handles synonyms, provides semantic similarity, and is language-independent. Weaknesses: can miss exact keywords, is computationally expensive, and requires quality embeddings.",
+      "relevant_chunk_ids": ["TECHNICAL_DOCUMENTATION.md_0018"],
+      "relevant_chunk_texts": [
+        "Understands meaning and context",
+        "Handles synonyms",
+        "Can miss exact keywords",
+        "Computationally expensive"
+      ],
+      "source_documents": ["TECHNICAL_DOCUMENTATION.md"],
+      "difficulty": "medium",
+      "question_type": "comparison",
+      "relevance_label": "CAN_ANSWER",
+      "metadata": {"requires_multi_chunk": false, "requires_reasoning": false}
+    },
+    {
+      "id": "eval_022",
+      "question": "How does vector similarity search work in ChromaDB?",
+      "ground_truth_answer": "The user query is converted to a 384-dimensional vector using the embedding function (all-MiniLM-L6-v2), then compared with all document vectors using cosine similarity, and the top-k most similar documents are returned.",
+      "relevant_chunk_ids": ["TECHNICAL_DOCUMENTATION.md_0022"],
+      "relevant_chunk_texts": [
+        "Each document chunk is embedded (text → 384-dim vector)",
+        "Vectors are stored in ChromaDB (in-memory by default)",
+        "Compare with all document vectors using Cosine Similarity",
+        "Return top-k most similar documents"
+      ],
+      "source_documents": ["TECHNICAL_DOCUMENTATION.md"],
+      "difficulty": "medium",
+      "question_type": "factoid",
+      "relevance_label": "CAN_ANSWER",
+      "metadata": {"requires_multi_chunk": false, "requires_reasoning": false}
+    },
+    {
+      "id": "eval_023",
+      "question": "What is the LangGraph state structure used by DocChat?",
+      "ground_truth_answer": "DocChat uses an AgentState TypedDict containing: question (user's question), documents (retrieved documents), draft_answer (generated answer), verification_report (verification results), is_relevant (relevance check result), and retriever (retriever instance).",
+      "relevant_chunk_ids": ["TECHNICAL_DOCUMENTATION.md_0039"],
+      "relevant_chunk_texts": [
+        "Shared state passed through the workflow",
+        "question: str",
+        "documents: List[Document]",
+        "draft_answer: str",
+        "verification_report: str"
+      ],
+      "source_documents": ["TECHNICAL_DOCUMENTATION.md"],
+      "difficulty": "medium",
+      "question_type": "factoid",
+      "relevance_label": "CAN_ANSWER",
+      "metadata": {"requires_multi_chunk": false, "requires_reasoning": false}
+    },
+    {
+      "id": "eval_024",
+      "question": "How does the hybrid retrieval combine BM25 and vector search results?",
+      "ground_truth_answer": "The hybrid retriever uses Reciprocal Rank Fusion (RRF) with configurable weights to combine BM25 and vector search results. Each retriever's results are scored with the formula weight * (1/(rank + k)) where k=60, then documents are sorted by fused score.",
+      "relevant_chunk_ids": ["TECHNICAL_DOCUMENTATION.md_0025", "TECHNICAL_DOCUMENTATION.md_0019"],
+      "relevant_chunk_texts": [
+        "Hybrid = Best of Both Worlds",
+        "ensemble scoring",
+        "bm25_score",
+        "vector_score"
+      ],
+      "source_documents": ["TECHNICAL_DOCUMENTATION.md"],
+      "difficulty": "hard",
+      "question_type": "reasoning",
+      "relevance_label": "CAN_ANSWER",
+      "metadata": {"requires_multi_chunk": true, "requires_reasoning": true}
+    },
+    {
+      "id": "eval_025",
+      "question": "What LLM does DocChat use?",
+      "ground_truth_answer": "DocChat uses Azure OpenAI GPT-4.",
+      "relevant_chunk_ids": ["TECHNICAL_DOCUMENTATION.md_0002"],
+      "relevant_chunk_texts": [
+        "LLM: Azure OpenAI GPT-4"
+      ],
+      "source_documents": ["TECHNICAL_DOCUMENTATION.md"],
+      "difficulty": "easy",
+      "question_type": "factoid",
+      "relevance_label": "CAN_ANSWER",
+      "metadata": {"requires_multi_chunk": false, "requires_reasoning": false}
+    },
+    {
+      "id": "eval_026",
+      "question": "How does DocChat handle configuration?",
+      "ground_truth_answer": "DocChat uses environment variables for configuration through three layers. It reads from a .env file using pydantic_settings BaseSettings, which validates and types environment variables with default values as fallback.",
+      "relevant_chunk_ids": ["TECHNICAL_DOCUMENTATION.md_0003", "TECHNICAL_DOCUMENTATION.md_0004"],
+      "relevant_chunk_texts": [
+        "DocChat uses environment variables for configuration through three layers",
+        "BaseSettings from pydantic_settings automatically reads .env",
+        "Environment variables are validated and typed"
+      ],
+      "source_documents": ["TECHNICAL_DOCUMENTATION.md"],
+      "difficulty": "medium",
+      "question_type": "factoid",
+      "relevance_label": "CAN_ANSWER",
+      "metadata": {"requires_multi_chunk": true, "requires_reasoning": false}
+    },
+    {
+      "id": "eval_027",
+      "question": "What is the difference between reactive and deliberative AI agents?",
+      "ground_truth_answer": "Reactive agents respond directly to current inputs without maintaining an internal state or memory, operating on stimulus-response patterns. Deliberative agents maintain an internal model of the world and use reasoning to plan their actions, anticipating future states.",
+      "relevant_chunk_ids": ["sample_ai_agents.md_0000"],
+      "relevant_chunk_texts": [
+        "Reactive agents respond directly to current inputs without maintaining an internal state or memory",
+        "They operate purely on stimulus-response patterns",
+        "Deliberative agents maintain an internal model of the world and use reasoning to plan their actions"
+      ],
+      "source_documents": ["sample_ai_agents.md"],
+      "difficulty": "medium",
+      "question_type": "comparison",
+      "relevance_label": "CAN_ANSWER",
+      "metadata": {"requires_multi_chunk": false, "requires_reasoning": true}
+    },
+    {
+      "id": "eval_028",
+      "question": "What advantages does hybrid retrieval provide over keyword-only or semantic-only search?",
+      "ground_truth_answer": "Hybrid retrieval provides better recall through keyword matching, better semantic understanding through embeddings, and more robust results across different query types. It combines BM25's exact keyword matching strength with vector search's ability to understand meaning and synonyms.",
+      "relevant_chunk_ids": ["sample_ai_agents.md_0002", "TECHNICAL_DOCUMENTATION.md_0018"],
+      "relevant_chunk_texts": [
+        "Better recall through keyword matching",
+        "Better semantic understanding through embeddings",
+        "More robust results across different query types",
+        "Hybrid Search combines two complementary approaches"
+      ],
+      "source_documents": ["sample_ai_agents.md", "TECHNICAL_DOCUMENTATION.md"],
+      "difficulty": "medium",
+      "question_type": "comparison",
+      "relevance_label": "CAN_ANSWER",
+      "metadata": {"requires_multi_chunk": true, "requires_reasoning": true}
+    },
+    {
+      "id": "eval_029",
+      "question": "How does the Relevance Checker classify questions?",
+      "ground_truth_answer": "The Relevance Checker retrieves top-k documents, combines them into context, and asks GPT-4 to classify relevance. It returns one of three labels: CAN_ANSWER (passages contain enough info), PARTIAL (mentions topic but insufficient info), or NO_MATCH (no relevant content found).",
+      "relevant_chunk_ids": ["TECHNICAL_DOCUMENTATION.md_0028", "TECHNICAL_DOCUMENTATION.md_0029"],
+      "relevant_chunk_texts": [
+        "Classify how well the document content addresses the question",
+        "CAN_ANSWER: Passages contain enough information to fully answer",
+        "PARTIAL: Passages mention topic",
+        "NO_MATCH"
+      ],
+      "source_documents": ["TECHNICAL_DOCUMENTATION.md"],
+      "difficulty": "medium",
+      "question_type": "multi-hop",
+      "relevance_label": "CAN_ANSWER",
+      "metadata": {"requires_multi_chunk": true, "requires_reasoning": false}
+    },
+    {
+      "id": "eval_030",
+      "question": "What is the cosine similarity formula used for vector search?",
+      "ground_truth_answer": "The cosine similarity formula is: similarity(A, B) = (A · B) / (||A|| × ||B||), where A · B is the dot product and ||A|| and ||B|| are the magnitudes of the vectors.",
+      "relevant_chunk_ids": ["TECHNICAL_DOCUMENTATION.md_0023"],
+      "relevant_chunk_texts": [
+        "similarity(A, B) = (A · B) / (||A|| × ||B||)",
+        "A · B = dot product"
+      ],
+      "source_documents": ["TECHNICAL_DOCUMENTATION.md"],
+      "difficulty": "hard",
+      "question_type": "factoid",
+      "relevance_label": "CAN_ANSWER",
+      "metadata": {"requires_multi_chunk": false, "requires_reasoning": false}
+    },
+    {
+      "id": "eval_031",
+      "question": "What is quantum computing's role in DocChat?",
+      "ground_truth_answer": "",
+      "relevant_chunk_ids": [],
+      "relevant_chunk_texts": [],
+      "source_documents": [],
+      "difficulty": "easy",
+      "question_type": "negative",
+      "relevance_label": "NO_MATCH",
+      "metadata": {"requires_multi_chunk": false, "requires_reasoning": false}
+    },
+    {
+      "id": "eval_032",
+      "question": "What neural network architecture does DocChat use for training?",
+      "ground_truth_answer": "",
+      "relevant_chunk_ids": [],
+      "relevant_chunk_texts": [],
+      "source_documents": [],
+      "difficulty": "easy",
+      "question_type": "negative",
+      "relevance_label": "NO_MATCH",
+      "metadata": {"requires_multi_chunk": false, "requires_reasoning": false}
+    },
+    {
+      "id": "eval_033",
+      "question": "How does DocChat handle blockchain integration?",
+      "ground_truth_answer": "",
+      "relevant_chunk_ids": [],
+      "relevant_chunk_texts": [],
+      "source_documents": [],
+      "difficulty": "easy",
+      "question_type": "negative",
+      "relevance_label": "NO_MATCH",
+      "metadata": {"requires_multi_chunk": false, "requires_reasoning": false}
+    },
+    {
+      "id": "eval_034",
+      "question": "Why does the Relevance Checker use temperature=0?",
+      "ground_truth_answer": "The Relevance Checker uses temperature=0 because classification tasks require consistency. The same question should always give the same classification, and there's no need for creativity in a yes/no decision.",
+      "relevant_chunk_ids": ["TECHNICAL_DOCUMENTATION.md_0030"],
+      "relevant_chunk_texts": [
+        "Classification task requires consistency",
+        "Same question should always give same classification"
+      ],
+      "source_documents": ["TECHNICAL_DOCUMENTATION.md"],
+      "difficulty": "medium",
+      "question_type": "reasoning",
+      "relevance_label": "CAN_ANSWER",
+      "metadata": {"requires_multi_chunk": false, "requires_reasoning": true}
+    },
+    {
+      "id": "eval_035",
+      "question": "What caching strategies does DocChat use for performance optimization?",
+      "ground_truth_answer": "DocChat uses document-level caching stored in a document_cache directory. Files are hashed with SHA-256 for content-based identification, and cached results are loaded when the same file is re-uploaded.",
+      "relevant_chunk_ids": ["TECHNICAL_DOCUMENTATION.md_0055", "TECHNICAL_DOCUMENTATION.md_0011"],
+      "relevant_chunk_texts": [
+        "Caching Strategies",
+        "Document-Level Caching",
+        "Content-based hashing: same content = same hash"
+      ],
+      "source_documents": ["TECHNICAL_DOCUMENTATION.md"],
+      "difficulty": "medium",
+      "question_type": "factoid",
+      "relevance_label": "CAN_ANSWER",
+      "metadata": {"requires_multi_chunk": true, "requires_reasoning": false}
+    }
+  ]
+}

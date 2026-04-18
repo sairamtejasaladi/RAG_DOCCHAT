@@ -22,6 +22,8 @@ class AgentState(TypedDict):
     verification_report: str
     is_relevant: bool
     retriever: EnsembleRetriever
+    iteration_count: int
+    relevance_classification: str
 
 
 class AgentWorkflow:
@@ -65,12 +67,13 @@ class AgentWorkflow:
         )
 
         if classification == "CAN_ANSWER":
-            return {"is_relevant": True}
+            return {"is_relevant": True, "relevance_classification": "CAN_ANSWER"}
         elif classification == "PARTIAL":
-            return {"is_relevant": True}
+            return {"is_relevant": True, "relevance_classification": "PARTIAL"}
         else:  # NO_MATCH
             return {
                 "is_relevant": False,
+                "relevance_classification": "NO_MATCH",
                 "draft_answer": (
                     "This question isn't related (or there's no data) for your query. "
                     "Please ask another question relevant to the uploaded document(s)."
@@ -84,11 +87,10 @@ class AgentWorkflow:
 
     def _research_step(self, state: AgentState) -> Dict:
         """Run the research agent to generate a draft answer."""
-        # Handoff (relevance_checker -> research_agent) is auto-tracked
-        # by @observe_agent context inside the agent methods
         result = self.researcher.generate(state["question"], state["documents"])
         logger.info("Research agent completed draft answer.")
-        return {"draft_answer": result["draft_answer"]}
+        new_count = state.get("iteration_count", 0) + 1
+        return {"draft_answer": result["draft_answer"], "iteration_count": new_count}
 
     def _verification_step(self, state: AgentState) -> Dict:
         """Run the verification agent to fact-check the draft answer."""
@@ -99,15 +101,19 @@ class AgentWorkflow:
 
     def _decide_next_step(self, state: AgentState) -> str:
         """Decide whether to re-research or end based on verification."""
+        current_count = state.get("iteration_count", 0) + 1
         verification_report = state["verification_report"]
         if (
             "Supported: NO" in verification_report
             or "Relevant: NO" in verification_report
         ):
-            logger.info("Verification failed — triggering re-research loop.")
+            if current_count >= 3:
+                logger.info(f"Max iterations ({current_count}) reached — ending workflow.")
+                return "end"
+            logger.info(f"Verification failed (iteration {current_count}) — triggering re-research loop.")
             return "re_research"
         else:
-            logger.info("Verification successful — ending workflow.")
+            logger.info(f"Verification successful (iteration {current_count}) — ending workflow.")
             return "end"
 
     def full_pipeline(self, question: str, retriever: EnsembleRetriever):
@@ -125,6 +131,8 @@ class AgentWorkflow:
                 verification_report="",
                 is_relevant=False,
                 retriever=retriever,
+                iteration_count=0,
+                relevance_classification="",
             )
 
             final_state = self.compiled_workflow.invoke(initial_state)
@@ -132,6 +140,9 @@ class AgentWorkflow:
             return {
                 "draft_answer": final_state["draft_answer"],
                 "verification_report": final_state["verification_report"],
+                "documents": final_state["documents"],
+                "relevance_classification": final_state.get("relevance_classification", ""),
+                "iteration_count": final_state.get("iteration_count", 0),
             }
 
         except Exception as e:

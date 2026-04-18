@@ -103,6 +103,10 @@ class DocumentProcessor:
             [text],
             metadatas=[{"source": os.path.basename(filepath)}],
         )
+        # Assign stable chunk IDs for evaluation traceability
+        source_name = os.path.basename(filepath)
+        for i, chunk in enumerate(chunks):
+            chunk.metadata["chunk_id"] = f"{source_name}_{i:04d}"
         return chunks
 
     def _read_pdf(self, filepath: str) -> str:

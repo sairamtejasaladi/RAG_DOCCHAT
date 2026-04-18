@@ -23,3 +23,5 @@ Thumbs.db
 .idea/
 
 document_cache/
+docs/
+vector_db_test_1.ipynb

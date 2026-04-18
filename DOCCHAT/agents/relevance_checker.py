@@ -2,21 +2,14 @@
 Relevance Checker — determines if the user's question is within scope of the uploaded documents.
 Uses local Ollama for classification.
 """
-from langchain_ollama import ChatOllama
 from docchat.config.settings import settings
 from docchat.utils.logging import logger
+from docchat.utils.llm_factory import get_llm
 
 class RelevanceChecker:
     def __init__(self):
-        """Initialize the relevance checker with local Ollama."""
-        # Initializing the LangChain Ollama client
-        self.llm = ChatOllama(
-            model=settings.LLM_MODEL_NAME,
-            base_url=settings.OLLAMA_BASE_URL,
-            temperature=0,
-            # Adding a small limit to speed up classification
-            num_predict=10 
-        )
+        """Initialize the relevance checker."""
+        self.llm = get_llm(temperature=0, max_tokens=10)
 
     def check(self, question: str, retriever, k: int = 3) -> str:
         """

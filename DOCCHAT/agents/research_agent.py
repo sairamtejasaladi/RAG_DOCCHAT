@@ -4,23 +4,16 @@ Uses local Ollama (Llama 3.1) via LangChain.
 """
 from typing import Dict, List
 from langchain_core.documents import Document
-from langchain_ollama import ChatOllama
 
 from docchat.config.settings import settings
 from docchat.utils.logging import logger
+from docchat.utils.llm_factory import get_llm
 
 class ResearchAgent:
     def __init__(self):
-        """Initialize the research agent with local Ollama."""
-        logger.info(f"Initializing ResearchAgent with local model: {settings.LLM_MODEL_NAME}")
-        
-        # Initialize the LangChain Ollama client
-        self.llm = ChatOllama(
-            model=settings.LLM_MODEL_NAME,
-            base_url=settings.OLLAMA_BASE_URL,
-            temperature=0.3, # Keeps a balance between factual and fluid
-            num_ctx=4096     # Standard context window for Llama 3.1
-        )
+        """Initialize the research agent."""
+        logger.info(f"Initializing ResearchAgent (provider={settings.LLM_PROVIDER})")
+        self.llm = get_llm(temperature=0.3, num_ctx=4096)
         logger.info("ResearchAgent initialized successfully.")
 
     def sanitize_response(self, response_text: str) -> str:

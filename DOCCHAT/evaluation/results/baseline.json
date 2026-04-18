@@ -1,0 +1,1552 @@
+{
+  "retrieval": {
+    "recall@5": 0.7428571428571429,
+    "recall@10": 0.8142857142857143,
+    "precision@5": 0.19428571428571428,
+    "precision@10": 0.11142857142857143,
+    "mrr": 0.4875974025974026,
+    "hit@5": 0.8,
+    "hit@10": 0.8285714285714286
+  },
+  "generation": {
+    "faithfulness": 0.0,
+    "relevance": 0.0,
+    "correctness": 0.0,
+    "completeness": 0.0
+  },
+  "e2e": {
+    "exact_match": 1.0,
+    "semantic_similarity": "1.0",
+    "satisfaction_proxy": "1.0"
+  },
+  "breakdown": {},
+  "metadata": {
+    "mode": "retrieval",
+    "dataset": "docchat/evaluation/datasets/v2_aligned_35.json",
+    "total_queries": 35,
+    "scored_queries": 35,
+    "timestamp": "2026-04-17T10:02:12.530902",
+    "num_chunks": 69,
+    "num_documents": 2
+  },
+  "per_query": [
+    {
+      "entry_id": "eval_001",
+      "question": "What embedding model does DocChat use for vector search?",
+      "generated_answer": "",
+      "ground_truth_answer": "DocChat uses all-MiniLM-L6-v2 with ONNX runtime via Chroma's built-in DefaultEmbeddingFunction, producing 384-dimensional vectors.",
+      "retrieval": {
+        "recall_at_5": 1.0,
+        "recall_at_10": 1.0,
+        "precision_at_5": 0.4,
+        "precision_at_10": 0.2,
+        "mrr": 1.0,
+        "hit_at_5": true,
+        "hit_at_10": true,
+        "retrieved_chunk_ids": [
+          "TECHNICAL_DOCUMENTATION.md_0022",
+          "TECHNICAL_DOCUMENTATION.md_0000",
+          "TECHNICAL_DOCUMENTATION.md_0002",
+          "TECHNICAL_DOCUMENTATION.md_0015",
+          "sample_ai_agents.md_0002",
+          "TECHNICAL_DOCUMENTATION.md_0055",
+          "TECHNICAL_DOCUMENTATION.md_0057",
+          "TECHNICAL_DOCUMENTATION.md_0062",
+          "TECHNICAL_DOCUMENTATION.md_0001",
+          "TECHNICAL_DOCUMENTATION.md_0018",
+          "sample_ai_agents.md_0000",
+          "TECHNICAL_DOCUMENTATION.md_0021"
+        ]
+      },
+      "generation": {
+        "faithfulness": 0.0,
+        "relevance": 0.0,
+        "correctness": 0.0,
+        "completeness": 0.0
+      },
+      "e2e": {
+        "exact_match": 1.0,
+        "semantic_similarity": "1.0",
+        "satisfaction_proxy": "1.0"
+      },
+      "relevance_classification": "",
+      "iteration_count": 0,
+      "latency_ms": 1697.4461078643799,
+      "error": null
+    },
+    {
+      "entry_id": "eval_002",
+      "question": "What is the chunk size and overlap used by DocChat's text splitter?",
+      "generated_answer": "",
+      "ground_truth_answer": "DocChat uses a chunk size of 1000 characters with a 200 character overlap using RecursiveCharacterTextSplitter.",
+      "retrieval": {
+        "recall_at_5": 1.0,
+        "recall_at_10": 1.0,
+        "precision_at_5": 0.2,
+        "precision_at_10": 0.1,
+        "mrr": 1.0,
+        "hit_at_5": true,
+        "hit_at_10": true,
+        "retrieved_chunk_ids": [
+          "TECHNICAL_DOCUMENTATION.md_0015",
+          "TECHNICAL_DOCUMENTATION.md_0016",
+          "TECHNICAL_DOCUMENTATION.md_0014",
+          "TECHNICAL_DOCUMENTATION.md_0000",
+          "TECHNICAL_DOCUMENTATION.md_0017",
+          "TECHNICAL_DOCUMENTATION.md_0057",
+          "TECHNICAL_DOCUMENTATION.md_0013",
+          "TECHNICAL_DOCUMENTATION.md_0002",
+          "TECHNICAL_DOCUMENTATION.md_0007",
+          "TECHNICAL_DOCUMENTATION.md_0050",
+          "TECHNICAL_DOCUMENTATION.md_0022"
+        ]
+      },
+      "generation": {
+        "faithfulness": 0.0,
+        "relevance": 0.0,
+        "correctness": 0.0,
+        "completeness": 0.0
+      },
+      "e2e": {
+        "exact_match": 1.0,
+        "semantic_similarity": "1.0",
+        "satisfaction_proxy": "1.0"
+      },
+      "relevance_classification": "",
+      "iteration_count": 0,
+      "latency_ms": 1846.5168476104736,
+      "error": null
+    },
+    {
+      "entry_id": "eval_003",
+      "question": "What vector database does DocChat use?",
+      "generated_answer": "",
+      "ground_truth_answer": "DocChat uses ChromaDB as its vector database for storing and searching document embeddings.",
+      "retrieval": {
+        "recall_at_5": 1.0,
+        "recall_at_10": 1.0,
+        "precision_at_5": 0.4,
+        "precision_at_10": 0.2,
+        "mrr": 0.5,
+        "hit_at_5": true,
+        "hit_at_10": true,
+        "retrieved_chunk_ids": [
+          "TECHNICAL_DOCUMENTATION.md_0000",
+          "TECHNICAL_DOCUMENTATION.md_0022",
+          "TECHNICAL_DOCUMENTATION.md_0002",
+          "TECHNICAL_DOCUMENTATION.md_0001",
+          "TECHNICAL_DOCUMENTATION.md_0062",
+          "TECHNICAL_DOCUMENTATION.md_0063",
+          "TECHNICAL_DOCUMENTATION.md_0055",
+          "TECHNICAL_DOCUMENTATION.md_0050",
+          "TECHNICAL_DOCUMENTATION.md_0057",
+          "sample_ai_agents.md_0002",
+          "TECHNICAL_DOCUMENTATION.md_0021",
+          "sample_ai_agents.md_0000"
+        ]
+      },
+      "generation": {
+        "faithfulness": 0.0,
+        "relevance": 0.0,
+        "correctness": 0.0,
+        "completeness": 0.0
+      },
+      "e2e": {
+        "exact_match": 1.0,
+        "semantic_similarity": "1.0",
+        "satisfaction_proxy": "1.0"
+      },
+      "relevance_classification": "",
+      "iteration_count": 0,
+      "latency_ms": 1474.245548248291,
+      "error": null
+    },
+    {
+      "entry_id": "eval_004",
+      "question": "What web framework is used for DocChat's user interface?",
+      "generated_answer": "",
+      "ground_truth_answer": "DocChat uses Gradio for its web user interface.",
+      "retrieval": {
+        "recall_at_5": 1.0,
+        "recall_at_10": 1.0,
+        "precision_at_5": 0.2,
+        "precision_at_10": 0.1,
+        "mrr": 0.3333333333333333,
+        "hit_at_5": true,
+        "hit_at_10": true,
+        "retrieved_chunk_ids": [
+          "TECHNICAL_DOCUMENTATION.md_0001",
+          "TECHNICAL_DOCUMENTATION.md_0000",
+          "TECHNICAL_DOCUMENTATION.md_0002",
+          "TECHNICAL_DOCUMENTATION.md_0050",
+          "sample_ai_agents.md_0001",
+          "TECHNICAL_DOCUMENTATION.md_0049",
+          "TECHNICAL_DOCUMENTATION.md_0033",
+          "sample_ai_agents.md_0000",
+          "TECHNICAL_DOCUMENTATION.md_0015",
+          "TECHNICAL_DOCUMENTATION.md_0003",
+          "TECHNICAL_DOCUMENTATION.md_0054",
+          "TECHNICAL_DOCUMENTATION.md_0063",
+          "TECHNICAL_DOCUMENTATION.md_0062"
+        ]
+      },
+      "generation": {
+        "faithfulness": 0.0,
+        "relevance": 0.0,
+        "correctness": 0.0,
+        "completeness": 0.0
+      },
+      "e2e": {
+        "exact_match": 1.0,
+        "semantic_similarity": "1.0",
+        "satisfaction_proxy": "1.0"
+      },
+      "relevance_classification": "",
+      "iteration_count": 0,
+      "latency_ms": 1503.4654140472412,
+      "error": null
+    },
+    {
+      "entry_id": "eval_005",
+      "question": "What framework is used for workflow orchestration in DocChat?",
+      "generated_answer": "",
+      "ground_truth_answer": "DocChat uses LangGraph for orchestrating the multi-agent workflow as a directed state graph.",
+      "retrieval": {
+        "recall_at_5": 1.0,
+        "recall_at_10": 1.0,
+        "precision_at_5": 0.4,
+        "precision_at_10": 0.2,
+        "mrr": 0.3333333333333333,
+        "hit_at_5": true,
+        "hit_at_10": true,
+        "retrieved_chunk_ids": [
+          "TECHNICAL_DOCUMENTATION.md_0047",
+          "TECHNICAL_DOCUMENTATION.md_0000",
+          "TECHNICAL_DOCUMENTATION.md_0039",
+          "TECHNICAL_DOCUMENTATION.md_0002",
+          "TECHNICAL_DOCUMENTATION.md_0049",
+          "TECHNICAL_DOCUMENTATION.md_0050",
+          "sample_ai_agents.md_0001",
+          "TECHNICAL_DOCUMENTATION.md_0038",
+          "TECHNICAL_DOCUMENTATION.md_0001",
+          "TECHNICAL_DOCUMENTATION.md_0060",
+          "TECHNICAL_DOCUMENTATION.md_0045",
+          "TECHNICAL_DOCUMENTATION.md_0054",
+          "TECHNICAL_DOCUMENTATION.md_0014"
+        ]
+      },
+      "generation": {
+        "faithfulness": 0.0,
+        "relevance": 0.0,
+        "correctness": 0.0,
+        "completeness": 0.0
+      },
+      "e2e": {
+        "exact_match": 1.0,
+        "semantic_similarity": "1.0",
+        "satisfaction_proxy": "1.0"
+      },
+      "relevance_classification": "",
+      "iteration_count": 0,
+      "latency_ms": 1378.8034915924072,
+      "error": null
+    },
+    {
+      "entry_id": "eval_006",
+      "question": "What is the purpose of the Relevance Checker agent in DocChat?",
+      "generated_answer": "",
+      "ground_truth_answer": "The Relevance Checker determines if the user's question can be answered from the uploaded documents. It retrieves top-k documents and asks GPT-4 to classify relevance as CAN_ANSWER, PARTIAL, or NO_MATCH.",
+      "retrieval": {
+        "recall_at_5": 1.0,
+        "recall_at_10": 1.0,
+        "precision_at_5": 0.2,
+        "precision_at_10": 0.1,
+        "mrr": 0.5,
+        "hit_at_5": true,
+        "hit_at_10": true,
+        "retrieved_chunk_ids": [
+          "TECHNICAL_DOCUMENTATION.md_0000",
+          "TECHNICAL_DOCUMENTATION.md_0028",
+          "TECHNICAL_DOCUMENTATION.md_0001",
+          "TECHNICAL_DOCUMENTATION.md_0042",
+          "TECHNICAL_DOCUMENTATION.md_0049",
+          "TECHNICAL_DOCUMENTATION.md_0062",
+          "TECHNICAL_DOCUMENTATION.md_0063",
+          "sample_ai_agents.md_0002",
+          "TECHNICAL_DOCUMENTATION.md_0044",
+          "TECHNICAL_DOCUMENTATION.md_0026",
+          "TECHNICAL_DOCUMENTATION.md_0043",
+          "TECHNICAL_DOCUMENTATION.md_0046"
+        ]
+      },
+      "generation": {
+        "faithfulness": 0.0,
+        "relevance": 0.0,
+        "correctness": 0.0,
+        "completeness": 0.0
+      },
+      "e2e": {
+        "exact_match": 1.0,
+        "semantic_similarity": "1.0",
+        "satisfaction_proxy": "1.0"
+      },
+      "relevance_classification": "",
+      "iteration_count": 0,
+      "latency_ms": 1275.86030960083,
+      "error": null
+    },
+    {
+      "entry_id": "eval_007",
+      "question": "What does the Research Agent do in DocChat?",
+      "generated_answer": "",
+      "ground_truth_answer": "The Research Agent generates comprehensive, factual answers based on retrieved context. It combines retrieved documents, builds a structured prompt, calls GPT-4, and sanitizes the response.",
+      "retrieval": {
+        "recall_at_5": 0.0,
+        "recall_at_10": 0.0,
+        "precision_at_5": 0.0,
+        "precision_at_10": 0.0,
+        "mrr": 0.09090909090909091,
+        "hit_at_5": false,
+        "hit_at_10": false,
+        "retrieved_chunk_ids": [
+          "TECHNICAL_DOCUMENTATION.md_0062",
+          "TECHNICAL_DOCUMENTATION.md_0000",
+          "TECHNICAL_DOCUMENTATION.md_0001",
+          "TECHNICAL_DOCUMENTATION.md_0049",
+          "sample_ai_agents.md_0001",
+          "sample_ai_agents.md_0000",
+          "TECHNICAL_DOCUMENTATION.md_0004",
+          "TECHNICAL_DOCUMENTATION.md_0058",
+          "sample_ai_agents.md_0002",
+          "TECHNICAL_DOCUMENTATION.md_0002",
+          "TECHNICAL_DOCUMENTATION.md_0031",
+          "TECHNICAL_DOCUMENTATION.md_0032",
+          "TECHNICAL_DOCUMENTATION.md_0038"
+        ]
+      },
+      "generation": {
+        "faithfulness": 0.0,
+        "relevance": 0.0,
+        "correctness": 0.0,
+        "completeness": 0.0
+      },
+      "e2e": {
+        "exact_match": 1.0,
+        "semantic_similarity": "1.0",
+        "satisfaction_proxy": "1.0"
+      },
+      "relevance_classification": "",
+      "iteration_count": 0,
+      "latency_ms": 1416.311264038086,
+      "error": null
+    },
+    {
+      "entry_id": "eval_008",
+      "question": "What is the purpose of the Verification Agent?",
+      "generated_answer": "",
+      "ground_truth_answer": "The Verification Agent fact-checks the generated answer against source documents. It combines documents into source context, builds a verification prompt, calls GPT-4 to verify, parses the response, and formats a verification report.",
+      "retrieval": {
+        "recall_at_5": 0.0,
+        "recall_at_10": 0.0,
+        "precision_at_5": 0.0,
+        "precision_at_10": 0.0,
+        "mrr": 0.0,
+        "hit_at_5": false,
+        "hit_at_10": false,
+        "retrieved_chunk_ids": [
+          "TECHNICAL_DOCUMENTATION.md_0001",
+          "TECHNICAL_DOCUMENTATION.md_0035",
+          "TECHNICAL_DOCUMENTATION.md_0027",
+          "TECHNICAL_DOCUMENTATION.md_0058",
+          "TECHNICAL_DOCUMENTATION.md_0038",
+          "TECHNICAL_DOCUMENTATION.md_0045",
+          "TECHNICAL_DOCUMENTATION.md_0033",
+          "TECHNICAL_DOCUMENTATION.md_0043",
+          "TECHNICAL_DOCUMENTATION.md_0062",
+          "sample_ai_agents.md_0001",
+          "TECHNICAL_DOCUMENTATION.md_0000",
+          "TECHNICAL_DOCUMENTATION.md_0014"
+        ]
+      },
+      "generation": {
+        "faithfulness": 0.0,
+        "relevance": 0.0,
+        "correctness": 0.0,
+        "completeness": 0.0
+      },
+      "e2e": {
+        "exact_match": 1.0,
+        "semantic_similarity": "1.0",
+        "satisfaction_proxy": "1.0"
+      },
+      "relevance_classification": "",
+      "iteration_count": 0,
+      "latency_ms": 2222.141981124878,
+      "error": null
+    },
+    {
+      "entry_id": "eval_009",
+      "question": "How does DocChat's hybrid retrieval system work?",
+      "generated_answer": "",
+      "ground_truth_answer": "DocChat's hybrid search combines BM25 (keyword-based) and vector search (semantic) using Reciprocal Rank Fusion. BM25 handles exact keyword matching while vector search understands meaning and context.",
+      "retrieval": {
+        "recall_at_5": 0.0,
+        "recall_at_10": 0.0,
+        "precision_at_5": 0.0,
+        "precision_at_10": 0.0,
+        "mrr": 0.0,
+        "hit_at_5": false,
+        "hit_at_10": false,
+        "retrieved_chunk_ids": [
+          "TECHNICAL_DOCUMENTATION.md_0017",
+          "TECHNICAL_DOCUMENTATION.md_0063",
+          "TECHNICAL_DOCUMENTATION.md_0015",
+          "TECHNICAL_DOCUMENTATION.md_0000",
+          "TECHNICAL_DOCUMENTATION.md_0001",
+          "TECHNICAL_DOCUMENTATION.md_0062",
+          "sample_ai_agents.md_0001",
+          "TECHNICAL_DOCUMENTATION.md_0028",
+          "sample_ai_agents.md_0002",
+          "TECHNICAL_DOCUMENTATION.md_0002",
+          "TECHNICAL_DOCUMENTATION.md_0032"
+        ]
+      },
+      "generation": {
+        "faithfulness": 0.0,
+        "relevance": 0.0,
+        "correctness": 0.0,
+        "completeness": 0.0
+      },
+      "e2e": {
+        "exact_match": 1.0,
+        "semantic_similarity": "1.0",
+        "satisfaction_proxy": "1.0"
+      },
+      "relevance_classification": "",
+      "iteration_count": 0,
+      "latency_ms": 1247.5972175598145,
+      "error": null
+    },
+    {
+      "entry_id": "eval_010",
+      "question": "What is RAG and how does it work?",
+      "generated_answer": "",
+      "ground_truth_answer": "RAG (Retrieval-Augmented Generation) is a technique that combines retrieval of relevant information from a knowledge base with generation using an LLM. It retrieves relevant documents, augments the LLM prompt with context, and generates grounded answers.",
+      "retrieval": {
+        "recall_at_5": 1.0,
+        "recall_at_10": 1.0,
+        "precision_at_5": 0.4,
+        "precision_at_10": 0.2,
+        "mrr": 0.5,
+        "hit_at_5": true,
+        "hit_at_10": true,
+        "retrieved_chunk_ids": [
+          "TECHNICAL_DOCUMENTATION.md_0000",
+          "TECHNICAL_DOCUMENTATION.md_0001",
+          "TECHNICAL_DOCUMENTATION.md_0014",
+          "TECHNICAL_DOCUMENTATION.md_0017",
+          "sample_ai_agents.md_0001",
+          "TECHNICAL_DOCUMENTATION.md_0015",
+          "TECHNICAL_DOCUMENTATION.md_0007",
+          "TECHNICAL_DOCUMENTATION.md_0009",
+          "sample_ai_agents.md_0002",
+          "TECHNICAL_DOCUMENTATION.md_0062"
+        ]
+      },
+      "generation": {
+        "faithfulness": 0.0,
+        "relevance": 0.0,
+        "correctness": 0.0,
+        "completeness": 0.0
+      },
+      "e2e": {
+        "exact_match": 1.0,
+        "semantic_similarity": "1.0",
+        "satisfaction_proxy": "1.0"
+      },
+      "relevance_classification": "",
+      "iteration_count": 0,
+      "latency_ms": 1426.0368347167969,
+      "error": null
+    },
+    {
+      "entry_id": "eval_011",
+      "question": "What are the benefits of RAG?",
+      "generated_answer": "",
+      "ground_truth_answer": "RAG reduces hallucinations by grounding answers in real documents, enables LLMs to access up-to-date or domain-specific information, provides verifiable sources, and is cost-effective compared to fine-tuning.",
+      "retrieval": {
+        "recall_at_5": 1.0,
+        "recall_at_10": 1.0,
+        "precision_at_5": 0.2,
+        "precision_at_10": 0.1,
+        "mrr": 0.25,
+        "hit_at_5": true,
+        "hit_at_10": true,
+        "retrieved_chunk_ids": [
+          "TECHNICAL_DOCUMENTATION.md_0001",
+          "TECHNICAL_DOCUMENTATION.md_0000",
+          "TECHNICAL_DOCUMENTATION.md_0017",
+          "sample_ai_agents.md_0002",
+          "sample_ai_agents.md_0001",
+          "TECHNICAL_DOCUMENTATION.md_0014",
+          "TECHNICAL_DOCUMENTATION.md_0007",
+          "TECHNICAL_DOCUMENTATION.md_0054",
+          "TECHNICAL_DOCUMENTATION.md_0019",
+          "TECHNICAL_DOCUMENTATION.md_0059",
+          "sample_ai_agents.md_0000",
+          "TECHNICAL_DOCUMENTATION.md_0022"
+        ]
+      },
+      "generation": {
+        "faithfulness": 0.0,
+        "relevance": 0.0,
+        "correctness": 0.0,
+        "completeness": 0.0
+      },
+      "e2e": {
+        "exact_match": 1.0,
+        "semantic_similarity": "1.0",
+        "satisfaction_proxy": "1.0"
+      },
+      "relevance_classification": "",
+      "iteration_count": 0,
+      "latency_ms": 934.0002536773682,
+      "error": null
+    },
+    {
+      "entry_id": "eval_012",
+      "question": "What are AI agents?",
+      "generated_answer": "",
+      "ground_truth_answer": "AI agents are autonomous software systems that can perceive their environment, make decisions, and take actions to achieve specific goals. Unlike traditional software, they use machine learning models to adapt their behavior.",
+      "retrieval": {
+        "recall_at_5": 1.0,
+        "recall_at_10": 1.0,
+        "precision_at_5": 0.2,
+        "precision_at_10": 0.1,
+        "mrr": 1.0,
+        "hit_at_5": true,
+        "hit_at_10": true,
+        "retrieved_chunk_ids": [
+          "sample_ai_agents.md_0000",
+          "sample_ai_agents.md_0003",
+          "sample_ai_agents.md_0001",
+          "sample_ai_agents.md_0002",
+          "TECHNICAL_DOCUMENTATION.md_0058",
+          "TECHNICAL_DOCUMENTATION.md_0063",
+          "TECHNICAL_DOCUMENTATION.md_0001",
+          "TECHNICAL_DOCUMENTATION.md_0039",
+          "TECHNICAL_DOCUMENTATION.md_0028",
+          "TECHNICAL_DOCUMENTATION.md_0040",
+          "TECHNICAL_DOCUMENTATION.md_0032",
+          "TECHNICAL_DOCUMENTATION.md_0035"
+        ]
+      },
+      "generation": {
+        "faithfulness": 0.0,
+        "relevance": 0.0,
+        "correctness": 0.0,
+        "completeness": 0.0
+      },
+      "e2e": {
+        "exact_match": 1.0,
+        "semantic_similarity": "1.0",
+        "satisfaction_proxy": "1.0"
+      },
+      "relevance_classification": "",
+      "iteration_count": 0,
+      "latency_ms": 1082.341194152832,
+      "error": null
+    },
+    {
+      "entry_id": "eval_013",
+      "question": "What types of AI agents exist?",
+      "generated_answer": "",
+      "ground_truth_answer": "There are three main types: Reactive agents (respond to current inputs without memory), Deliberative agents (maintain internal models and plan actions), and Hybrid agents (combine reactive and deliberative approaches).",
+      "retrieval": {
+        "recall_at_5": 1.0,
+        "recall_at_10": 1.0,
+        "precision_at_5": 0.4,
+        "precision_at_10": 0.2,
+        "mrr": 1.0,
+        "hit_at_5": true,
+        "hit_at_10": true,
+        "retrieved_chunk_ids": [
+          "sample_ai_agents.md_0000",
+          "sample_ai_agents.md_0003",
+          "sample_ai_agents.md_0002",
+          "sample_ai_agents.md_0001",
+          "TECHNICAL_DOCUMENTATION.md_0058",
+          "TECHNICAL_DOCUMENTATION.md_0001",
+          "TECHNICAL_DOCUMENTATION.md_0039",
+          "TECHNICAL_DOCUMENTATION.md_0063",
+          "TECHNICAL_DOCUMENTATION.md_0028",
+          "TECHNICAL_DOCUMENTATION.md_0016",
+          "TECHNICAL_DOCUMENTATION.md_0064"
+        ]
+      },
+      "generation": {
+        "faithfulness": 0.0,
+        "relevance": 0.0,
+        "correctness": 0.0,
+        "completeness": 0.0
+      },
+      "e2e": {
+        "exact_match": 1.0,
+        "semantic_similarity": "1.0",
+        "satisfaction_proxy": "1.0"
+      },
+      "relevance_classification": "",
+      "iteration_count": 0,
+      "latency_ms": 1036.015510559082,
+      "error": null
+    },
+    {
+      "entry_id": "eval_014",
+      "question": "What are the key characteristics of multi-agent systems?",
+      "generated_answer": "",
+      "ground_truth_answer": "Key characteristics include cooperation (working toward shared goals), coordination (organizing activities to avoid conflicts), communication (exchanging information using defined protocols), and negotiation (resolving conflicts and reaching agreements).",
+      "retrieval": {
+        "recall_at_5": 1.0,
+        "recall_at_10": 1.0,
+        "precision_at_5": 0.2,
+        "precision_at_10": 0.1,
+        "mrr": 1.0,
+        "hit_at_5": true,
+        "hit_at_10": true,
+        "retrieved_chunk_ids": [
+          "sample_ai_agents.md_0001",
+          "sample_ai_agents.md_0000",
+          "TECHNICAL_DOCUMENTATION.md_0000",
+          "TECHNICAL_DOCUMENTATION.md_0058",
+          "sample_ai_agents.md_0003",
+          "TECHNICAL_DOCUMENTATION.md_0039",
+          "TECHNICAL_DOCUMENTATION.md_0001",
+          "TECHNICAL_DOCUMENTATION.md_0060",
+          "TECHNICAL_DOCUMENTATION.md_0063",
+          "TECHNICAL_DOCUMENTATION.md_0038",
+          "TECHNICAL_DOCUMENTATION.md_0037"
+        ]
+      },
+      "generation": {
+        "faithfulness": 0.0,
+        "relevance": 0.0,
+        "correctness": 0.0,
+        "completeness": 0.0
+      },
+      "e2e": {
+        "exact_match": 1.0,
+        "semantic_similarity": "1.0",
+        "satisfaction_proxy": "1.0"
+      },
+      "relevance_classification": "",
+      "iteration_count": 0,
+      "latency_ms": 1239.090919494629,
+      "error": null
+    },
+    {
+      "entry_id": "eval_015",
+      "question": "What observability metrics are important for monitoring AI agents?",
+      "generated_answer": "",
+      "ground_truth_answer": "AI agent observability requires LLM Metrics (token usage, latency, error rates, cost tracking), Agent Metrics (execution counts, success/failure rates, timeout events), Workflow Metrics (pipeline duration, step completion rates), and Collaboration Metrics (handoff counts, inter-agent latency).",
+      "retrieval": {
+        "recall_at_5": 1.0,
+        "recall_at_10": 1.0,
+        "precision_at_5": 0.2,
+        "precision_at_10": 0.1,
+        "mrr": 0.5,
+        "hit_at_5": true,
+        "hit_at_10": true,
+        "retrieved_chunk_ids": [
+          "sample_ai_agents.md_0000",
+          "sample_ai_agents.md_0003",
+          "sample_ai_agents.md_0002",
+          "sample_ai_agents.md_0001",
+          "TECHNICAL_DOCUMENTATION.md_0038",
+          "TECHNICAL_DOCUMENTATION.md_0001",
+          "TECHNICAL_DOCUMENTATION.md_0060",
+          "TECHNICAL_DOCUMENTATION.md_0063",
+          "TECHNICAL_DOCUMENTATION.md_0040",
+          "TECHNICAL_DOCUMENTATION.md_0035",
+          "TECHNICAL_DOCUMENTATION.md_0032",
+          "TECHNICAL_DOCUMENTATION.md_0064",
+          "TECHNICAL_DOCUMENTATION.md_0017"
+        ]
+      },
+      "generation": {
+        "faithfulness": 0.0,
+        "relevance": 0.0,
+        "correctness": 0.0,
+        "completeness": 0.0
+      },
+      "e2e": {
+        "exact_match": 1.0,
+        "semantic_similarity": "1.0",
+        "satisfaction_proxy": "1.0"
+      },
+      "relevance_classification": "",
+      "iteration_count": 0,
+      "latency_ms": 935.0228309631348,
+      "error": null
+    },
+    {
+      "entry_id": "eval_016",
+      "question": "How does OpenTelemetry help with AI system monitoring?",
+      "generated_answer": "",
+      "ground_truth_answer": "OpenTelemetry provides a standardized way to collect traces (end-to-end request flows), metrics (quantitative measurements like counters, histograms, gauges), and logs (structured event records) to understand system behavior and debug issues.",
+      "retrieval": {
+        "recall_at_5": 1.0,
+        "recall_at_10": 1.0,
+        "precision_at_5": 0.2,
+        "precision_at_10": 0.1,
+        "mrr": 1.0,
+        "hit_at_5": true,
+        "hit_at_10": true,
+        "retrieved_chunk_ids": [
+          "sample_ai_agents.md_0003",
+          "sample_ai_agents.md_0002",
+          "sample_ai_agents.md_0000",
+          "TECHNICAL_DOCUMENTATION.md_0004",
+          "sample_ai_agents.md_0001",
+          "TECHNICAL_DOCUMENTATION.md_0063",
+          "TECHNICAL_DOCUMENTATION.md_0001",
+          "TECHNICAL_DOCUMENTATION.md_0039",
+          "TECHNICAL_DOCUMENTATION.md_0038",
+          "TECHNICAL_DOCUMENTATION.md_0058",
+          "TECHNICAL_DOCUMENTATION.md_0032",
+          "TECHNICAL_DOCUMENTATION.md_0015"
+        ]
+      },
+      "generation": {
+        "faithfulness": 0.0,
+        "relevance": 0.0,
+        "correctness": 0.0,
+        "completeness": 0.0
+      },
+      "e2e": {
+        "exact_match": 1.0,
+        "semantic_similarity": "1.0",
+        "satisfaction_proxy": "1.0"
+      },
+      "relevance_classification": "",
+      "iteration_count": 0,
+      "latency_ms": 1017.1043872833252,
+      "error": null
+    },
+    {
+      "entry_id": "eval_017",
+      "question": "Why does DocChat use chunking for documents?",
+      "generated_answer": "",
+      "ground_truth_answer": "DocChat chunks documents because LLMs have token limits and can't process entire books, smaller chunks enable more precise retrieval, and it allows semantic search at the paragraph level.",
+      "retrieval": {
+        "recall_at_5": 1.0,
+        "recall_at_10": 1.0,
+        "precision_at_5": 0.2,
+        "precision_at_10": 0.1,
+        "mrr": 0.5,
+        "hit_at_5": true,
+        "hit_at_10": true,
+        "retrieved_chunk_ids": [
+          "TECHNICAL_DOCUMENTATION.md_0000",
+          "TECHNICAL_DOCUMENTATION.md_0015",
+          "TECHNICAL_DOCUMENTATION.md_0014",
+          "TECHNICAL_DOCUMENTATION.md_0057",
+          "TECHNICAL_DOCUMENTATION.md_0017",
+          "TECHNICAL_DOCUMENTATION.md_0062",
+          "TECHNICAL_DOCUMENTATION.md_0013",
+          "TECHNICAL_DOCUMENTATION.md_0002",
+          "TECHNICAL_DOCUMENTATION.md_0006",
+          "TECHNICAL_DOCUMENTATION.md_0016",
+          "sample_ai_agents.md_0000",
+          "TECHNICAL_DOCUMENTATION.md_0054",
+          "TECHNICAL_DOCUMENTATION.md_0005",
+          "TECHNICAL_DOCUMENTATION.md_0025"
+        ]
+      },
+      "generation": {
+        "faithfulness": 0.0,
+        "relevance": 0.0,
+        "correctness": 0.0,
+        "completeness": 0.0
+      },
+      "e2e": {
+        "exact_match": 1.0,
+        "semantic_similarity": "1.0",
+        "satisfaction_proxy": "1.0"
+      },
+      "relevance_classification": "",
+      "iteration_count": 0,
+      "latency_ms": 1076.7567157745361,
+      "error": null
+    },
+    {
+      "entry_id": "eval_018",
+      "question": "What is the self-correction loop in DocChat?",
+      "generated_answer": "",
+      "ground_truth_answer": "The self-correction loop is a cycle where the research agent generates an answer, the verification agent checks it, and if verification fails, the research agent tries again. It continues until verification passes, usually converging within 1-2 iterations, with a safeguard of max 3 iterations.",
+      "retrieval": {
+        "recall_at_5": 1.0,
+        "recall_at_10": 1.0,
+        "precision_at_5": 0.2,
+        "precision_at_10": 0.1,
+        "mrr": 0.5,
+        "hit_at_5": true,
+        "hit_at_10": true,
+        "retrieved_chunk_ids": [
+          "TECHNICAL_DOCUMENTATION.md_0000",
+          "TECHNICAL_DOCUMENTATION.md_0046",
+          "TECHNICAL_DOCUMENTATION.md_0045",
+          "TECHNICAL_DOCUMENTATION.md_0002",
+          "TECHNICAL_DOCUMENTATION.md_0001",
+          "TECHNICAL_DOCUMENTATION.md_0015",
+          "TECHNICAL_DOCUMENTATION.md_0062",
+          "TECHNICAL_DOCUMENTATION.md_0013",
+          "TECHNICAL_DOCUMENTATION.md_0034",
+          "TECHNICAL_DOCUMENTATION.md_0049",
+          "TECHNICAL_DOCUMENTATION.md_0014"
+        ]
+      },
+      "generation": {
+        "faithfulness": 0.0,
+        "relevance": 0.0,
+        "correctness": 0.0,
+        "completeness": 0.0
+      },
+      "e2e": {
+        "exact_match": 1.0,
+        "semantic_similarity": "1.0",
+        "satisfaction_proxy": "1.0"
+      },
+      "relevance_classification": "",
+      "iteration_count": 0,
+      "latency_ms": 1322.0622539520264,
+      "error": null
+    },
+    {
+      "entry_id": "eval_019",
+      "question": "How does DocChat's caching mechanism work?",
+      "generated_answer": "",
+      "ground_truth_answer": "DocChat uses SHA-256 content-based hashing for document caching. When a file is uploaded, its content hash is computed. If a valid cache exists, chunks are loaded from cache. Otherwise, the file is processed and cached. Cache validity is checked based on age.",
+      "retrieval": {
+        "recall_at_5": 0.5,
+        "recall_at_10": 1.0,
+        "precision_at_5": 0.2,
+        "precision_at_10": 0.2,
+        "mrr": 0.2,
+        "hit_at_5": true,
+        "hit_at_10": true,
+        "retrieved_chunk_ids": [
+          "TECHNICAL_DOCUMENTATION.md_0002",
+          "TECHNICAL_DOCUMENTATION.md_0051",
+          "TECHNICAL_DOCUMENTATION.md_0000",
+          "TECHNICAL_DOCUMENTATION.md_0055",
+          "TECHNICAL_DOCUMENTATION.md_0011",
+          "TECHNICAL_DOCUMENTATION.md_0054",
+          "TECHNICAL_DOCUMENTATION.md_0062",
+          "TECHNICAL_DOCUMENTATION.md_0009",
+          "TECHNICAL_DOCUMENTATION.md_0022",
+          "TECHNICAL_DOCUMENTATION.md_0001",
+          "TECHNICAL_DOCUMENTATION.md_0063",
+          "TECHNICAL_DOCUMENTATION.md_0032"
+        ]
+      },
+      "generation": {
+        "faithfulness": 0.0,
+        "relevance": 0.0,
+        "correctness": 0.0,
+        "completeness": 0.0
+      },
+      "e2e": {
+        "exact_match": 1.0,
+        "semantic_similarity": "1.0",
+        "satisfaction_proxy": "1.0"
+      },
+      "relevance_classification": "",
+      "iteration_count": 0,
+      "latency_ms": 937.5514984130859,
+      "error": null
+    },
+    {
+      "entry_id": "eval_020",
+      "question": "What are the strengths of BM25 search?",
+      "generated_answer": "",
+      "ground_truth_answer": "BM25 strengths include exact keyword matching, good performance for specific terms like product names, codes, and dates, being fast and lightweight, and requiring no training.",
+      "retrieval": {
+        "recall_at_5": 1.0,
+        "recall_at_10": 1.0,
+        "precision_at_5": 0.2,
+        "precision_at_10": 0.1,
+        "mrr": 0.25,
+        "hit_at_5": true,
+        "hit_at_10": true,
+        "retrieved_chunk_ids": [
+          "TECHNICAL_DOCUMENTATION.md_0023",
+          "TECHNICAL_DOCUMENTATION.md_0021",
+          "TECHNICAL_DOCUMENTATION.md_0019",
+          "TECHNICAL_DOCUMENTATION.md_0018",
+          "sample_ai_agents.md_0002",
+          "TECHNICAL_DOCUMENTATION.md_0017",
+          "TECHNICAL_DOCUMENTATION.md_0024",
+          "TECHNICAL_DOCUMENTATION.md_0025",
+          "TECHNICAL_DOCUMENTATION.md_0063",
+          "TECHNICAL_DOCUMENTATION.md_0055",
+          "sample_ai_agents.md_0000"
+        ]
+      },
+      "generation": {
+        "faithfulness": 0.0,
+        "relevance": 0.0,
+        "correctness": 0.0,
+        "completeness": 0.0
+      },
+      "e2e": {
+        "exact_match": 1.0,
+        "semantic_similarity": "1.0",
+        "satisfaction_proxy": "1.0"
+      },
+      "relevance_classification": "",
+      "iteration_count": 0,
+      "latency_ms": 1152.3706912994385,
+      "error": null
+    },
+    {
+      "entry_id": "eval_021",
+      "question": "What are the strengths and weaknesses of vector search?",
+      "generated_answer": "",
+      "ground_truth_answer": "Vector search strengths: understands meaning and context, handles synonyms, provides semantic similarity, and is language-independent. Weaknesses: can miss exact keywords, is computationally expensive, and requires quality embeddings.",
+      "retrieval": {
+        "recall_at_5": 1.0,
+        "recall_at_10": 1.0,
+        "precision_at_5": 0.2,
+        "precision_at_10": 0.1,
+        "mrr": 0.25,
+        "hit_at_5": true,
+        "hit_at_10": true,
+        "retrieved_chunk_ids": [
+          "TECHNICAL_DOCUMENTATION.md_0022",
+          "TECHNICAL_DOCUMENTATION.md_0021",
+          "TECHNICAL_DOCUMENTATION.md_0023",
+          "TECHNICAL_DOCUMENTATION.md_0018",
+          "sample_ai_agents.md_0002",
+          "TECHNICAL_DOCUMENTATION.md_0025",
+          "TECHNICAL_DOCUMENTATION.md_0063",
+          "TECHNICAL_DOCUMENTATION.md_0055",
+          "TECHNICAL_DOCUMENTATION.md_0017",
+          "TECHNICAL_DOCUMENTATION.md_0019",
+          "sample_ai_agents.md_0000"
+        ]
+      },
+      "generation": {
+        "faithfulness": 0.0,
+        "relevance": 0.0,
+        "correctness": 0.0,
+        "completeness": 0.0
+      },
+      "e2e": {
+        "exact_match": 1.0,
+        "semantic_similarity": "1.0",
+        "satisfaction_proxy": "1.0"
+      },
+      "relevance_classification": "",
+      "iteration_count": 0,
+      "latency_ms": 884.1078281402588,
+      "error": null
+    },
+    {
+      "entry_id": "eval_022",
+      "question": "How does vector similarity search work in ChromaDB?",
+      "generated_answer": "",
+      "ground_truth_answer": "The user query is converted to a 384-dimensional vector using the embedding function (all-MiniLM-L6-v2), then compared with all document vectors using cosine similarity, and the top-k most similar documents are returned.",
+      "retrieval": {
+        "recall_at_5": 1.0,
+        "recall_at_10": 1.0,
+        "precision_at_5": 0.2,
+        "precision_at_10": 0.1,
+        "mrr": 1.0,
+        "hit_at_5": true,
+        "hit_at_10": true,
+        "retrieved_chunk_ids": [
+          "TECHNICAL_DOCUMENTATION.md_0022",
+          "TECHNICAL_DOCUMENTATION.md_0021",
+          "TECHNICAL_DOCUMENTATION.md_0063",
+          "TECHNICAL_DOCUMENTATION.md_0023",
+          "TECHNICAL_DOCUMENTATION.md_0062",
+          "TECHNICAL_DOCUMENTATION.md_0020",
+          "TECHNICAL_DOCUMENTATION.md_0018",
+          "TECHNICAL_DOCUMENTATION.md_0025",
+          "TECHNICAL_DOCUMENTATION.md_0019",
+          "TECHNICAL_DOCUMENTATION.md_0017",
+          "sample_ai_agents.md_0002"
+        ]
+      },
+      "generation": {
+        "faithfulness": 0.0,
+        "relevance": 0.0,
+        "correctness": 0.0,
+        "completeness": 0.0
+      },
+      "e2e": {
+        "exact_match": 1.0,
+        "semantic_similarity": "1.0",
+        "satisfaction_proxy": "1.0"
+      },
+      "relevance_classification": "",
+      "iteration_count": 0,
+      "latency_ms": 1117.9509162902832,
+      "error": null
+    },
+    {
+      "entry_id": "eval_023",
+      "question": "What is the LangGraph state structure used by DocChat?",
+      "generated_answer": "",
+      "ground_truth_answer": "DocChat uses an AgentState TypedDict containing: question (user's question), documents (retrieved documents), draft_answer (generated answer), verification_report (verification results), is_relevant (relevance check result), and retriever (retriever instance).",
+      "retrieval": {
+        "recall_at_5": 1.0,
+        "recall_at_10": 1.0,
+        "precision_at_5": 0.2,
+        "precision_at_10": 0.1,
+        "mrr": 1.0,
+        "hit_at_5": true,
+        "hit_at_10": true,
+        "retrieved_chunk_ids": [
+          "TECHNICAL_DOCUMENTATION.md_0039",
+          "TECHNICAL_DOCUMENTATION.md_0002",
+          "TECHNICAL_DOCUMENTATION.md_0000",
+          "TECHNICAL_DOCUMENTATION.md_0015",
+          "TECHNICAL_DOCUMENTATION.md_0050",
+          "TECHNICAL_DOCUMENTATION.md_0017",
+          "sample_ai_agents.md_0001",
+          "TECHNICAL_DOCUMENTATION.md_0003",
+          "TECHNICAL_DOCUMENTATION.md_0001",
+          "TECHNICAL_DOCUMENTATION.md_0013",
+          "TECHNICAL_DOCUMENTATION.md_0022",
+          "TECHNICAL_DOCUMENTATION.md_0063",
+          "TECHNICAL_DOCUMENTATION.md_0054"
+        ]
+      },
+      "generation": {
+        "faithfulness": 0.0,
+        "relevance": 0.0,
+        "correctness": 0.0,
+        "completeness": 0.0
+      },
+      "e2e": {
+        "exact_match": 1.0,
+        "semantic_similarity": "1.0",
+        "satisfaction_proxy": "1.0"
+      },
+      "relevance_classification": "",
+      "iteration_count": 0,
+      "latency_ms": 1153.7120342254639,
+      "error": null
+    },
+    {
+      "entry_id": "eval_024",
+      "question": "How does the hybrid retrieval combine BM25 and vector search results?",
+      "generated_answer": "",
+      "ground_truth_answer": "The hybrid retriever uses Reciprocal Rank Fusion (RRF) with configurable weights to combine BM25 and vector search results. Each retriever's results are scored with the formula weight * (1/(rank + k)) where k=60, then documents are sorted by fused score.",
+      "retrieval": {
+        "recall_at_5": 0.0,
+        "recall_at_10": 1.0,
+        "precision_at_5": 0.0,
+        "precision_at_10": 0.2,
+        "mrr": 0.125,
+        "hit_at_5": false,
+        "hit_at_10": true,
+        "retrieved_chunk_ids": [
+          "TECHNICAL_DOCUMENTATION.md_0021",
+          "sample_ai_agents.md_0002",
+          "TECHNICAL_DOCUMENTATION.md_0063",
+          "TECHNICAL_DOCUMENTATION.md_0018",
+          "TECHNICAL_DOCUMENTATION.md_0023",
+          "TECHNICAL_DOCUMENTATION.md_0017",
+          "TECHNICAL_DOCUMENTATION.md_0022",
+          "TECHNICAL_DOCUMENTATION.md_0019",
+          "TECHNICAL_DOCUMENTATION.md_0062",
+          "TECHNICAL_DOCUMENTATION.md_0025",
+          "TECHNICAL_DOCUMENTATION.md_0015"
+        ]
+      },
+      "generation": {
+        "faithfulness": 0.0,
+        "relevance": 0.0,
+        "correctness": 0.0,
+        "completeness": 0.0
+      },
+      "e2e": {
+        "exact_match": 1.0,
+        "semantic_similarity": "1.0",
+        "satisfaction_proxy": "1.0"
+      },
+      "relevance_classification": "",
+      "iteration_count": 0,
+      "latency_ms": 905.3256511688232,
+      "error": null
+    },
+    {
+      "entry_id": "eval_025",
+      "question": "What LLM does DocChat use?",
+      "generated_answer": "",
+      "ground_truth_answer": "DocChat uses Azure OpenAI GPT-4.",
+      "retrieval": {
+        "recall_at_5": 1.0,
+        "recall_at_10": 1.0,
+        "precision_at_5": 0.2,
+        "precision_at_10": 0.1,
+        "mrr": 0.3333333333333333,
+        "hit_at_5": true,
+        "hit_at_10": true,
+        "retrieved_chunk_ids": [
+          "TECHNICAL_DOCUMENTATION.md_0000",
+          "TECHNICAL_DOCUMENTATION.md_0001",
+          "TECHNICAL_DOCUMENTATION.md_0002",
+          "TECHNICAL_DOCUMENTATION.md_0033",
+          "TECHNICAL_DOCUMENTATION.md_0015",
+          "TECHNICAL_DOCUMENTATION.md_0038",
+          "sample_ai_agents.md_0002",
+          "sample_ai_agents.md_0001",
+          "TECHNICAL_DOCUMENTATION.md_0050",
+          "TECHNICAL_DOCUMENTATION.md_0029",
+          "sample_ai_agents.md_0000",
+          "TECHNICAL_DOCUMENTATION.md_0032"
+        ]
+      },
+      "generation": {
+        "faithfulness": 0.0,
+        "relevance": 0.0,
+        "correctness": 0.0,
+        "completeness": 0.0
+      },
+      "e2e": {
+        "exact_match": 1.0,
+        "semantic_similarity": "1.0",
+        "satisfaction_proxy": "1.0"
+      },
+      "relevance_classification": "",
+      "iteration_count": 0,
+      "latency_ms": 882.4756145477295,
+      "error": null
+    },
+    {
+      "entry_id": "eval_026",
+      "question": "How does DocChat handle configuration?",
+      "generated_answer": "",
+      "ground_truth_answer": "DocChat uses environment variables for configuration through three layers. It reads from a .env file using pydantic_settings BaseSettings, which validates and types environment variables with default values as fallback.",
+      "retrieval": {
+        "recall_at_5": 1.0,
+        "recall_at_10": 1.0,
+        "precision_at_5": 0.4,
+        "precision_at_10": 0.2,
+        "mrr": 0.5,
+        "hit_at_5": true,
+        "hit_at_10": true,
+        "retrieved_chunk_ids": [
+          "TECHNICAL_DOCUMENTATION.md_0002",
+          "TECHNICAL_DOCUMENTATION.md_0003",
+          "TECHNICAL_DOCUMENTATION.md_0000",
+          "TECHNICAL_DOCUMENTATION.md_0050",
+          "TECHNICAL_DOCUMENTATION.md_0004",
+          "TECHNICAL_DOCUMENTATION.md_0005",
+          "TECHNICAL_DOCUMENTATION.md_0001",
+          "TECHNICAL_DOCUMENTATION.md_0060",
+          "TECHNICAL_DOCUMENTATION.md_0049",
+          "TECHNICAL_DOCUMENTATION.md_0062",
+          "TECHNICAL_DOCUMENTATION.md_0015",
+          "TECHNICAL_DOCUMENTATION.md_0032"
+        ]
+      },
+      "generation": {
+        "faithfulness": 0.0,
+        "relevance": 0.0,
+        "correctness": 0.0,
+        "completeness": 0.0
+      },
+      "e2e": {
+        "exact_match": 1.0,
+        "semantic_similarity": "1.0",
+        "satisfaction_proxy": "1.0"
+      },
+      "relevance_classification": "",
+      "iteration_count": 0,
+      "latency_ms": 1015.7928466796875,
+      "error": null
+    },
+    {
+      "entry_id": "eval_027",
+      "question": "What is the difference between reactive and deliberative AI agents?",
+      "generated_answer": "",
+      "ground_truth_answer": "Reactive agents respond directly to current inputs without maintaining an internal state or memory, operating on stimulus-response patterns. Deliberative agents maintain an internal model of the world and use reasoning to plan their actions, anticipating future states.",
+      "retrieval": {
+        "recall_at_5": 1.0,
+        "recall_at_10": 1.0,
+        "precision_at_5": 0.2,
+        "precision_at_10": 0.1,
+        "mrr": 1.0,
+        "hit_at_5": true,
+        "hit_at_10": true,
+        "retrieved_chunk_ids": [
+          "sample_ai_agents.md_0000",
+          "sample_ai_agents.md_0001",
+          "TECHNICAL_DOCUMENTATION.md_0039",
+          "sample_ai_agents.md_0002",
+          "sample_ai_agents.md_0003",
+          "TECHNICAL_DOCUMENTATION.md_0001",
+          "TECHNICAL_DOCUMENTATION.md_0058",
+          "TECHNICAL_DOCUMENTATION.md_0040",
+          "TECHNICAL_DOCUMENTATION.md_0063",
+          "TECHNICAL_DOCUMENTATION.md_0017",
+          "TECHNICAL_DOCUMENTATION.md_0015"
+        ]
+      },
+      "generation": {
+        "faithfulness": 0.0,
+        "relevance": 0.0,
+        "correctness": 0.0,
+        "completeness": 0.0
+      },
+      "e2e": {
+        "exact_match": 1.0,
+        "semantic_similarity": "1.0",
+        "satisfaction_proxy": "1.0"
+      },
+      "relevance_classification": "",
+      "iteration_count": 0,
+      "latency_ms": 1174.8378276824951,
+      "error": null
+    },
+    {
+      "entry_id": "eval_028",
+      "question": "What advantages does hybrid retrieval provide over keyword-only or semantic-only search?",
+      "generated_answer": "",
+      "ground_truth_answer": "Hybrid retrieval provides better recall through keyword matching, better semantic understanding through embeddings, and more robust results across different query types. It combines BM25's exact keyword matching strength with vector search's ability to understand meaning and synonyms.",
+      "retrieval": {
+        "recall_at_5": 0.5,
+        "recall_at_10": 1.0,
+        "precision_at_5": 0.2,
+        "precision_at_10": 0.2,
+        "mrr": 0.5,
+        "hit_at_5": true,
+        "hit_at_10": true,
+        "retrieved_chunk_ids": [
+          "TECHNICAL_DOCUMENTATION.md_0017",
+          "TECHNICAL_DOCUMENTATION.md_0018",
+          "TECHNICAL_DOCUMENTATION.md_0021",
+          "TECHNICAL_DOCUMENTATION.md_0001",
+          "TECHNICAL_DOCUMENTATION.md_0019",
+          "sample_ai_agents.md_0002",
+          "TECHNICAL_DOCUMENTATION.md_0063",
+          "sample_ai_agents.md_0001",
+          "TECHNICAL_DOCUMENTATION.md_0062",
+          "TECHNICAL_DOCUMENTATION.md_0055",
+          "TECHNICAL_DOCUMENTATION.md_0032",
+          "TECHNICAL_DOCUMENTATION.md_0029",
+          "TECHNICAL_DOCUMENTATION.md_0014"
+        ]
+      },
+      "generation": {
+        "faithfulness": 0.0,
+        "relevance": 0.0,
+        "correctness": 0.0,
+        "completeness": 0.0
+      },
+      "e2e": {
+        "exact_match": 1.0,
+        "semantic_similarity": "1.0",
+        "satisfaction_proxy": "1.0"
+      },
+      "relevance_classification": "",
+      "iteration_count": 0,
+      "latency_ms": 1207.8969478607178,
+      "error": null
+    },
+    {
+      "entry_id": "eval_029",
+      "question": "How does the Relevance Checker classify questions?",
+      "generated_answer": "",
+      "ground_truth_answer": "The Relevance Checker retrieves top-k documents, combines them into context, and asks GPT-4 to classify relevance. It returns one of three labels: CAN_ANSWER (passages contain enough info), PARTIAL (mentions topic but insufficient info), or NO_MATCH (no relevant content found).",
+      "retrieval": {
+        "recall_at_5": 0.5,
+        "recall_at_10": 0.5,
+        "precision_at_5": 0.2,
+        "precision_at_10": 0.1,
+        "mrr": 1.0,
+        "hit_at_5": true,
+        "hit_at_10": true,
+        "retrieved_chunk_ids": [
+          "TECHNICAL_DOCUMENTATION.md_0028",
+          "TECHNICAL_DOCUMENTATION.md_0042",
+          "TECHNICAL_DOCUMENTATION.md_0030",
+          "TECHNICAL_DOCUMENTATION.md_0044",
+          "TECHNICAL_DOCUMENTATION.md_0001",
+          "TECHNICAL_DOCUMENTATION.md_0026",
+          "sample_ai_agents.md_0002",
+          "TECHNICAL_DOCUMENTATION.md_0035",
+          "TECHNICAL_DOCUMENTATION.md_0025",
+          "TECHNICAL_DOCUMENTATION.md_0024",
+          "TECHNICAL_DOCUMENTATION.md_0062",
+          "TECHNICAL_DOCUMENTATION.md_0032",
+          "TECHNICAL_DOCUMENTATION.md_0038"
+        ]
+      },
+      "generation": {
+        "faithfulness": 0.0,
+        "relevance": 0.0,
+        "correctness": 0.0,
+        "completeness": 0.0
+      },
+      "e2e": {
+        "exact_match": 1.0,
+        "semantic_similarity": "1.0",
+        "satisfaction_proxy": "1.0"
+      },
+      "relevance_classification": "",
+      "iteration_count": 0,
+      "latency_ms": 992.6044940948486,
+      "error": null
+    },
+    {
+      "entry_id": "eval_030",
+      "question": "What is the cosine similarity formula used for vector search?",
+      "generated_answer": "",
+      "ground_truth_answer": "The cosine similarity formula is: similarity(A, B) = (A \u00b7 B) / (||A|| \u00d7 ||B||), where A \u00b7 B is the dot product and ||A|| and ||B|| are the magnitudes of the vectors.",
+      "retrieval": {
+        "recall_at_5": 1.0,
+        "recall_at_10": 1.0,
+        "precision_at_5": 0.2,
+        "precision_at_10": 0.1,
+        "mrr": 0.2,
+        "hit_at_5": true,
+        "hit_at_10": true,
+        "retrieved_chunk_ids": [
+          "TECHNICAL_DOCUMENTATION.md_0022",
+          "TECHNICAL_DOCUMENTATION.md_0021",
+          "TECHNICAL_DOCUMENTATION.md_0018",
+          "sample_ai_agents.md_0002",
+          "TECHNICAL_DOCUMENTATION.md_0023",
+          "TECHNICAL_DOCUMENTATION.md_0025",
+          "TECHNICAL_DOCUMENTATION.md_0017",
+          "TECHNICAL_DOCUMENTATION.md_0024",
+          "TECHNICAL_DOCUMENTATION.md_0007",
+          "TECHNICAL_DOCUMENTATION.md_0019"
+        ]
+      },
+      "generation": {
+        "faithfulness": 0.0,
+        "relevance": 0.0,
+        "correctness": 0.0,
+        "completeness": 0.0
+      },
+      "e2e": {
+        "exact_match": 1.0,
+        "semantic_similarity": "1.0",
+        "satisfaction_proxy": "1.0"
+      },
+      "relevance_classification": "",
+      "iteration_count": 0,
+      "latency_ms": 1338.9546871185303,
+      "error": null
+    },
+    {
+      "entry_id": "eval_031",
+      "question": "What is quantum computing's role in DocChat?",
+      "generated_answer": "",
+      "ground_truth_answer": "",
+      "retrieval": {
+        "recall_at_5": 0.0,
+        "recall_at_10": 0.0,
+        "precision_at_5": 0.0,
+        "precision_at_10": 0.0,
+        "mrr": 0.0,
+        "hit_at_5": false,
+        "hit_at_10": false,
+        "retrieved_chunk_ids": []
+      },
+      "generation": {
+        "faithfulness": 0.0,
+        "relevance": 0.0,
+        "correctness": 0.0,
+        "completeness": 0.0
+      },
+      "e2e": {
+        "exact_match": 0.0,
+        "semantic_similarity": 0.0,
+        "satisfaction_proxy": 0.0
+      },
+      "relevance_classification": "",
+      "iteration_count": 0,
+      "latency_ms": 0.0,
+      "error": null
+    },
+    {
+      "entry_id": "eval_032",
+      "question": "What neural network architecture does DocChat use for training?",
+      "generated_answer": "",
+      "ground_truth_answer": "",
+      "retrieval": {
+        "recall_at_5": 0.0,
+        "recall_at_10": 0.0,
+        "precision_at_5": 0.0,
+        "precision_at_10": 0.0,
+        "mrr": 0.0,
+        "hit_at_5": false,
+        "hit_at_10": false,
+        "retrieved_chunk_ids": []
+      },
+      "generation": {
+        "faithfulness": 0.0,
+        "relevance": 0.0,
+        "correctness": 0.0,
+        "completeness": 0.0
+      },
+      "e2e": {
+        "exact_match": 0.0,
+        "semantic_similarity": 0.0,
+        "satisfaction_proxy": 0.0
+      },
+      "relevance_classification": "",
+      "iteration_count": 0,
+      "latency_ms": 0.0,
+      "error": null
+    },
+    {
+      "entry_id": "eval_033",
+      "question": "How does DocChat handle blockchain integration?",
+      "generated_answer": "",
+      "ground_truth_answer": "",
+      "retrieval": {
+        "recall_at_5": 0.0,
+        "recall_at_10": 0.0,
+        "precision_at_5": 0.0,
+        "precision_at_10": 0.0,
+        "mrr": 0.0,
+        "hit_at_5": false,
+        "hit_at_10": false,
+        "retrieved_chunk_ids": []
+      },
+      "generation": {
+        "faithfulness": 0.0,
+        "relevance": 0.0,
+        "correctness": 0.0,
+        "completeness": 0.0
+      },
+      "e2e": {
+        "exact_match": 0.0,
+        "semantic_similarity": 0.0,
+        "satisfaction_proxy": 0.0
+      },
+      "relevance_classification": "",
+      "iteration_count": 0,
+      "latency_ms": 0.0,
+      "error": null
+    },
+    {
+      "entry_id": "eval_034",
+      "question": "Why does the Relevance Checker use temperature=0?",
+      "generated_answer": "",
+      "ground_truth_answer": "The Relevance Checker uses temperature=0 because classification tasks require consistency. The same question should always give the same classification, and there's no need for creativity in a yes/no decision.",
+      "retrieval": {
+        "recall_at_5": 1.0,
+        "recall_at_10": 1.0,
+        "precision_at_5": 0.2,
+        "precision_at_10": 0.1,
+        "mrr": 0.2,
+        "hit_at_5": true,
+        "hit_at_10": true,
+        "retrieved_chunk_ids": [
+          "TECHNICAL_DOCUMENTATION.md_0028",
+          "TECHNICAL_DOCUMENTATION.md_0062",
+          "TECHNICAL_DOCUMENTATION.md_0042",
+          "TECHNICAL_DOCUMENTATION.md_0044",
+          "TECHNICAL_DOCUMENTATION.md_0030",
+          "TECHNICAL_DOCUMENTATION.md_0038",
+          "TECHNICAL_DOCUMENTATION.md_0041",
+          "TECHNICAL_DOCUMENTATION.md_0025",
+          "TECHNICAL_DOCUMENTATION.md_0055",
+          "TECHNICAL_DOCUMENTATION.md_0049",
+          "TECHNICAL_DOCUMENTATION.md_0054",
+          "TECHNICAL_DOCUMENTATION.md_0005"
+        ]
+      },
+      "generation": {
+        "faithfulness": 0.0,
+        "relevance": 0.0,
+        "correctness": 0.0,
+        "completeness": 0.0
+      },
+      "e2e": {
+        "exact_match": 1.0,
+        "semantic_similarity": "1.0",
+        "satisfaction_proxy": "1.0"
+      },
+      "relevance_classification": "",
+      "iteration_count": 0,
+      "latency_ms": 1236.7665767669678,
+      "error": null
+    },
+    {
+      "entry_id": "eval_035",
+      "question": "What caching strategies does DocChat use for performance optimization?",
+      "generated_answer": "",
+      "ground_truth_answer": "DocChat uses document-level caching stored in a document_cache directory. Files are hashed with SHA-256 for content-based identification, and cached results are loaded when the same file is re-uploaded.",
+      "retrieval": {
+        "recall_at_5": 0.5,
+        "recall_at_10": 1.0,
+        "precision_at_5": 0.2,
+        "precision_at_10": 0.2,
+        "mrr": 0.5,
+        "hit_at_5": true,
+        "hit_at_10": true,
+        "retrieved_chunk_ids": [
+          "TECHNICAL_DOCUMENTATION.md_0000",
+          "TECHNICAL_DOCUMENTATION.md_0055",
+          "TECHNICAL_DOCUMENTATION.md_0009",
+          "TECHNICAL_DOCUMENTATION.md_0063",
+          "TECHNICAL_DOCUMENTATION.md_0002",
+          "TECHNICAL_DOCUMENTATION.md_0057",
+          "TECHNICAL_DOCUMENTATION.md_0001",
+          "TECHNICAL_DOCUMENTATION.md_0011",
+          "TECHNICAL_DOCUMENTATION.md_0051",
+          "TECHNICAL_DOCUMENTATION.md_0022",
+          "sample_ai_agents.md_0000",
+          "TECHNICAL_DOCUMENTATION.md_0014",
+          "TECHNICAL_DOCUMENTATION.md_0032"
+        ]
+      },
+      "generation": {
+        "faithfulness": 0.0,
+        "relevance": 0.0,
+        "correctness": 0.0,
+        "completeness": 0.0
+      },
+      "e2e": {
+        "exact_match": 1.0,
+        "semantic_similarity": "1.0",
+        "satisfaction_proxy": "1.0"
+      },
+      "relevance_classification": "",
+      "iteration_count": 0,
+      "latency_ms": 832.5939178466797,
+      "error": null
+    }
+  ],
+  "regressions": [],
+  "failures": [
+    {
+      "entry_id": "eval_007",
+      "reasons": [
+        "retrieval: zero hits in top-10"
+      ]
+    },
+    {
+      "entry_id": "eval_008",
+      "reasons": [
+        "retrieval: zero hits in top-10"
+      ]
+    },
+    {
+      "entry_id": "eval_009",
+      "reasons": [
+        "retrieval: zero hits in top-10"
+      ]
+    }
+  ]
+}
